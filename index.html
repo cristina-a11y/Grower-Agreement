@@ -10,7 +10,7 @@
     body {
       font-family: 'Libre Baskerville', serif;
       padding: 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       background-color: #f5f5f5;
     }
@@ -19,12 +19,12 @@
       font-weight: 700;
     }
     input, textarea, select {
-      width: 100%;
       padding: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-family: 'Libre Baskerville', serif;
+      width: 100%;
     }
     button {
       padding: 10px 20px;
@@ -42,10 +42,19 @@
       border-radius: 8px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      min-width: 200px;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 15px;
+      margin-top: 10px;
     }
     table, th, td {
       border: 1px solid #ccc;
@@ -53,7 +62,6 @@
     th, td {
       padding: 8px;
       text-align: left;
-      font-family: 'Libre Baskerville', serif;
     }
   </style>
 </head>
@@ -61,44 +69,50 @@
   <h1>Hazelnut Grower Agreement</h1>
   <form action="https://formspree.io/f/xgeglgak" method="POST">
     <div class="form-section">
-      <label for="growerName">Grower Name</label>
-      <input type="text" id="growerName" name="Grower Name" required>
+      <div class="row">
+        <div class="column">
+          <label for="growerName">Grower Name</label>
+          <input type="text" id="growerName" name="Grower Name" required>
 
-      <label for="contactName">Contact Name</label>
-      <input type="text" id="contactName" name="Contact Name" required>
+          <label for="contactName">Contact Name</label>
+          <input type="text" id="contactName" name="Contact Name">
 
-      <label for="mailingAddress">Mailing Address</label>
-      <input type="text" id="mailingAddress" name="Mailing Address">
+          <label for="mailingAddress">Mailing Address</label>
+          <input type="text" id="mailingAddress" name="Mailing Address">
 
-      <label for="city">City</label>
-      <input type="text" id="city" name="City">
+          <label for="city">City</label>
+          <input type="text" id="city" name="City">
 
-      <label for="state">State</label>
-      <input type="text" id="state" name="State">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email Address">
 
-      <label for="zip">Zip</label>
-      <input type="text" id="zip" name="Zip">
+          <label>HGBA Member</label>
+          <select name="HGBA Member">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
 
-      <label for="phoneDay">Phone (Day)</label>
-      <input type="tel" id="phoneDay" name="Phone Day">
+        <div class="column">
+          <label for="cropYear">Crop Year</label>
+          <input type="text" id="cropYear" name="Crop Year">
 
-      <label for="phoneEve">Phone (Eve)</label>
-      <input type="tel" id="phoneEve" name="Phone Eve">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="Date">
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="Email Address">
+          <label for="phoneDay">Phone (Day)</label>
+          <input type="tel" id="phoneDay" name="Phone Day">
 
-      <label for="cropYear">Crop Year</label>
-      <input type="text" id="cropYear" name="Crop Year">
+          <label for="phoneEve">Phone (Eve)</label>
+          <input type="tel" id="phoneEve" name="Phone Eve">
 
-      <label for="date">Date</label>
-      <input type="date" id="date" name="Date">
+          <label for="state">State</label>
+          <input type="text" id="state" name="State">
 
-      <label>HGBA Member</label>
-      <select name="HGBA Member">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
+          <label for="zip">Zip</label>
+          <input type="text" id="zip" name="Zip">
+        </div>
+      </div>
     </div>
 
     <div class="form-section">
@@ -116,43 +130,23 @@
           <tr><td><input type="text" name="Orchard Name 1"></td><td><input type="text" name="Acreage 1"></td><td><input type="text" name="Variety 1"></td><td><input type="text" name="Planting Year 1"></td></tr>
           <tr><td><input type="text" name="Orchard Name 2"></td><td><input type="text" name="Acreage 2"></td><td><input type="text" name="Variety 2"></td><td><input type="text" name="Planting Year 2"></td></tr>
           <tr><td><input type="text" name="Orchard Name 3"></td><td><input type="text" name="Acreage 3"></td><td><input type="text" name="Variety 3"></td><td><input type="text" name="Planting Year 3"></td></tr>
-          <tr><td><input type="text" name="Orchard Name 4"></td><td><input type="text" name="Acreage 4"></td><td><input type="text" name="Variety 4"></td><td><input type="text" name="Planting Year 4"></td></tr>
-          <tr><td><input type="text" name="Orchard Name 5"></td><td><input type="text" name="Acreage 5"></td><td><input type="text" name="Variety 5"></td><td><input type="text" name="Planting Year 5"></td></tr>
-          <tr><td><input type="text" name="Orchard Name 6"></td><td><input type="text" name="Acreage 6"></td><td><input type="text" name="Variety 6"></td><td><input type="text" name="Planting Year 6"></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="form-section">
-      <label>Will You Participate in the Cash Advance Program?</label>
-      <select name="Cash Advance Program">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
+      <label>Hazelnuts Received At:</label>
+      <p>Willamette Hazelnut, Inc. (hereafter referred to as Buyer) agrees to buy from Grower and Grower agrees to sell to Buyer the Hazelnut crop (from the described above properties) for the duration hereof. Payment will be made in accordance to the most recent version of the Hazelnut Growers Bargaining Association and Member-Growers’ Contract with Buyer. Grower assumes all risks of loss, damage, or deterioration of any Hazelnuts occurring prior to final acceptance thereof by Buyer. Grower warrants that Grower is the sole owner of the above described hazelnut crop free of encumbrances; that Grower has not previously contracted to sell or deliver any of said hazelnuts to any other person, that Grower shall not during the durations of this contract either encumber or contract for delivery to any other person the production above described; and that Grower shall deliver said Hazelnuts to Buyer free of all encumbrances. Grower warrants and represents that chemicals and fertilizer applied to acreage contracted herein, have been registered for use on Hazelnuts, and that Good Agricultural Practices (GAP) will be followed in all phases of production and harvesting of Hazelnuts delivered to Buyer. Buyer will refuse to accept delivery of any Lot known to have been treated with chemicals or fertilizer not registered for use on hazelnuts or otherwise not produced and harvested in accordance with GAP. If Grower elects not to participate in Buyer’s Cash Advance Payment Program, it is agreed that in the event Grower is unable to deliver said Hazelnuts to Buyer, on account of destruction by floods, weather conditions, or any unavoidable casualties, or in the event that Buyer shall be unable to process, handle, or ship said Hazelnuts on account of quarantine or other governmental restrictions, railroad or labor strikes, fire or other unavoidable casualties, or inability to get supplies on account of such restrictions, strikes, fires, or unavoidable casualties, then this contract shall be null and void upon written notice by either party to the other party or such inability to perform and the reason therefore.</p>
     </div>
 
     <div class="form-section">
-      <label>Orchard Split Information (optional)</label>
-      <label>Orchard Name</label>
-      <input type="text" name="Split Orchard Name">
-
-      <label>Third-Party Grower Name</label>
-      <input type="text" name="Third-Party Grower Name">
-
-      <label>% To Be Paid to Third-Party</label>
-      <input type="text" name="Split Percentage">
-
-      <label>Third-Party Mailing Address</label>
-      <input type="text" name="Third-Party Mailing Address">
-    </div>
-
-    <div class="form-section">
-      <label for="signature">Digital Signature</label>
-      <input type="text" id="signature" name="Digital Signature" placeholder="Type full name to sign" required>
+      <label>Buyer Signature</label>
+      <input type="text" name="Buyer Signature" placeholder="Type full name to sign">
+      <label>Grower Signature</label>
+      <input type="text" name="Grower Signature" placeholder="Type full name to sign">
     </div>
 
     <button type="submit">Submit</button>
   </form>
 </body>
 </html>
-
