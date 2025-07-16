@@ -139,6 +139,7 @@
     line-height: 1.4;
     font-size: 0.85em;
     background: #f9f9f9;
+    text-align: justify;
   }
   .cash-section {
     margin-top: 40px;
@@ -154,12 +155,11 @@
     width: 45%;
     text-align: center;
   }
-  .signature-input {
+  .signature-line {
     width: 100%;
-    border: none;
+    height: 40px;
     border-bottom: 1px solid #333;
-    padding: 6px;
-    font-family: inherit;
+    margin-bottomL 4px;
   }
   .signature-lines.single {
     justify-content: center;
@@ -218,8 +218,6 @@
       <label for="phoneDay">Phone (Day)</label>
       <input id="phoneDay" type="tel" name="phoneDay">
 
-      <label for="phoneEve">Phone (Eve)</label>
-      <input id="phoneEve" type="tel" name="phoneEve">
     </div>
   </div>
 
@@ -275,14 +273,12 @@
 
   <div class="signature-lines">
     <div>
-      <label for="buyerSig">Buyer: Willamette Hazelnut Inc.</label>
-      <input id="buyerSig" type="text" name="buyerSignature" class="signature-input">
-      <div class="small">Type full name</div>
+            <div class="signature-line"></div>
+      <span>Buyer: Willamette Hazelnut Inc.</span>
     </div>
     <div>
-      <label for="growerSig">Grower:</label>
-      <input id="growerSig" type="text" name="growerSignature" class="signature-input">
-      <div class="small">Type full name</div>
+      <div class="signature-line"></div>
+      <span>Grower:</span>
     </div>
   </div>
 
@@ -298,12 +294,13 @@
     </div>
     <div class="signature-lines single">
       <div>
-        <label for="cashGrowerSig">Grower:</label>
-        <input id="cashGrowerSig" type="text" name="cashGrowerSignature" class="signature-input">
-        <div class="small">Type full name</div>
+        <div class="signature-line"></div>
+        <span>Grower's Signature</span>
       </div>
     </div>
   </div>
 </form>
+</body>
+</html>
 </body>
 </html>
