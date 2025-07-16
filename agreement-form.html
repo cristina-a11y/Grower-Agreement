@@ -55,15 +55,16 @@
     }
     .title {
       text-align: center;
-      margin-bottom: 15px;
-        color: #4b2e2e;
+      margin-bottom: 10px;
+      color: #4b2e2e;
+      line-height: 1;
     }
     .title .hazel {
       font-size: 2em;
       display: block;
+      margin-bottom: -4px;
     }
     .title .agreement {
-        margin-bottom: -3px
       font-size: 1.2em;
       display: block;
       letter-spacing: 0.1em;
@@ -100,7 +101,7 @@
     gap: 20px;
   }
   .inline > div {
-    min-width: 150px;
+    min-width: 100px;
     flex: 1;
   }
   .form-columns {
@@ -138,6 +139,16 @@
   }
   .radio-group {
     margin-bottom: 12px;
+  }
+  .radio-group label {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: normal;
+  }
+  .radio-group label:first-child {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
   }
   .signature {
     margin-top: 40px;
@@ -214,7 +225,7 @@
   </head>
   <body>
   <div class="banner">
-    <img src="Hazelnut-inshell.png">
+    <img src="Hazelnut-inshell.png" alt="Hazelnuts decorative">
   </div>
   <div class="page-header">
     <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
@@ -228,10 +239,10 @@
       Newberg, Oregon, 97132<br>
       TEL (503) 538 9256<br>
       FAX (888) 769 8874<br>
-      <strong>www.whazelnut.com</strong>m
-      </div>
+      <strong>www.whazelnut.com</strong>
     </div>
-    <form>
+  </div>
+  <form>
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name</label>
@@ -248,7 +259,7 @@
           <label for="city">City</label>
           <input id="city" type="text" name="city">
         </div>
-            <div>
+        <div>
           <label for="state">State</label>
           <input id="state" type="text" name="state">
         </div>
@@ -305,7 +316,7 @@
   </table>
 
   <div class="radio-group">
-    <label>Do Any of Your Orchards Require an Orchard Payment Split?</label><br>
+    <label>Do Any of Your Orchards Require an Orchard Payment Split?</label>
     <label><input type="radio" name="paymentSplit" value="yes"> Yes</label>
     <label><input type="radio" name="paymentSplit" value="no"> No</label>
   </div>
@@ -338,7 +349,7 @@
       <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
     </div>
     <div class="radio-group">
-      <label>Will You Participate in the Cash Advance Program?</label><br>
+      <label>Will You Participate in the Cash Advance Program?</label>
       <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
       <label><input type="radio" name="cashAdvance" value="no"> No</label>
     </div>
