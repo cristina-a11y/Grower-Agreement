@@ -155,10 +155,10 @@
     width: 45%;
     text-align: center;
   }
-  .signature-line {
+  .signature-box {
     width: 100%;
-    height: 40px;
-    border-bottom: 1px solid #333;
+    height: 80px;
+    border: 1px solid #333;
     margin-bottom: 4px;
   }
   .signature-lines.single {
@@ -198,13 +198,15 @@
           <label for="city">City</label>
           <input id="city" type="text" name="city">
         </div>
-        <div>
-          <label for="state">State</label>
-          <input id="state" type="text" name="state">
-        </div>
-        <div>
-          <label for="zip">Zip</label>
-          <input id="zip" type="text" name="zip">
+        <div class="inline">
+          <div>
+            <label for="state">State</label>
+            <input id="state" type="text" name="state">
+          </div>
+          <div>
+            <label for="zip">Zip</label>
+            <input id="zip" type="text" name="zip">
+          </div>
         </div>
       </div>
     </div>
@@ -273,11 +275,11 @@
 
   <div class="signature-lines">
     <div>
-      <div class="signature-line"></div>
+      <div class="signature-box"></div>
       <span>Buyer: Willamette Hazelnut Inc.</span>
     </div>
     <div>
-      <div class="signature-line"></div>
+      <div class="signature-box"></div>
       <span>Grower:</span>
     </div>
   </div>
@@ -292,12 +294,12 @@
       <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
       <label><input type="radio" name="cashAdvance" value="no"> No</label>
     </div>
-    <div class="signature-lines single">
-      <div>
-        <div class="signature-line"></div>
-        <span>Grower's Signature</span>
-      </div>
+  <div class="signature-lines single">
+    <div>
+      <div class="signature-box"></div>
+      <span>Grower's Signature</span>
     </div>
+  </div>
   </div>
 </form>
 </body>
