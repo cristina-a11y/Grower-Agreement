@@ -51,6 +51,14 @@
       flex: 1;
       min-width: 200px;
     }
+    .inline-group {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+    .inline-group > div {
+      flex: 1;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -69,48 +77,65 @@
   <h1>Hazelnut Grower Agreement</h1>
   <form action="https://formspree.io/f/xgeglgak" method="POST">
     <div class="form-section">
-      <div class="row">
-        <div class="column">
+      <div class="inline-group">
+        <div>
           <label for="growerName">Grower Name</label>
           <input type="text" id="growerName" name="Grower Name" required>
-
+        </div>
+        <div>
+          <label for="cropYear">Crop Year</label>
+          <input type="text" id="cropYear" name="Crop Year">
+        </div>
+      </div>
+      <div class="inline-group">
+        <div>
           <label for="contactName">Contact Name</label>
           <input type="text" id="contactName" name="Contact Name">
-
-          <label for="mailingAddress">Mailing Address</label>
-          <input type="text" id="mailingAddress" name="Mailing Address">
-
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input type="date" id="date" name="Date">
+        </div>
+      </div>
+      <div>
+        <label for="mailingAddress">Mailing Address</label>
+        <input type="text" id="mailingAddress" name="Mailing Address">
+      </div>
+      <div class="inline-group">
+        <div>
           <label for="city">City</label>
           <input type="text" id="city" name="City">
-
+        </div>
+        <div>
+          <label for="state">State</label>
+          <input type="text" id="state" name="State">
+        </div>
+        <div>
+          <label for="zip">Zip</label>
+          <input type="text" id="zip" name="Zip">
+        </div>
+      </div>
+      <div class="inline-group">
+        <div>
+          <label for="phoneDay">Phone (Day)</label>
+          <input type="tel" id="phoneDay" name="Phone Day">
+        </div>
+        <div>
+          <label for="phoneEve">Phone (Eve)</label>
+          <input type="tel" id="phoneEve" name="Phone Eve">
+        </div>
+      </div>
+      <div class="inline-group">
+        <div>
           <label for="email">Email Address</label>
           <input type="email" id="email" name="Email Address">
-
+        </div>
+        <div>
           <label>HGBA Member</label>
           <select name="HGBA Member">
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
-        </div>
-
-        <div class="column">
-          <label for="cropYear">Crop Year</label>
-          <input type="text" id="cropYear" name="Crop Year">
-
-          <label for="date">Date</label>
-          <input type="date" id="date" name="Date">
-
-          <label for="phoneDay">Phone (Day)</label>
-          <input type="tel" id="phoneDay" name="Phone Day">
-
-          <label for="phoneEve">Phone (Eve)</label>
-          <input type="tel" id="phoneEve" name="Phone Eve">
-
-          <label for="state">State</label>
-          <input type="text" id="state" name="State">
-
-          <label for="zip">Zip</label>
-          <input type="text" id="zip" name="Zip">
         </div>
       </div>
     </div>
