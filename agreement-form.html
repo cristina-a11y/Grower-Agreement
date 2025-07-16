@@ -5,41 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hazelnut Grower Agreement - Willamette Hazelnut Inc.</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  body {
-    font-family: 'Libre Baskerville', serif;
-    background: #f7f7f7;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-  }
-  header.top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-  header.top-header .company {
-    font-size: 1.6em;
-    font-weight: bold;
-    color: #4b2e2e; /* brown */
-  }
-  header.top-header .info {
-    text-align: right;
-    color: #264d19; /* dark green */
-    line-height: 1.3;
-    font-size: 0.9em;
-  }
-  .title {
-    text-align: center;
-    font-size: 1.8em;
-    color: #4b2e2e;
-    margin-bottom: 20px;
-  }
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Libre Baskerville', serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .banner img {
+      width: 33%;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .page-header .logo {
+      max-width: 120px;
+    }
+    .page-header h1 {
+      margin: 0;
+      text-align: center;
+      flex: 1;
+    }
+    .page-header .contact {
+      text-align: right;
+      color: #264d19; /* dark green */
+      line-height: 1.3;
+      font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      .page-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .page-header .contact {
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+    .title {
+      text-align: center;
+      font-size: 1.8em;
+      color: #4b2e2e;
+      margin-bottom: 20px;
+    }
   form {
     max-width: 900px;
     margin: auto;
@@ -167,13 +186,19 @@
   .signature-lines.single div {
     width: 60%;
   }
-</style>
-</head>
-<body>
-<form>
-  <header class="top-header">
-    <div class="company">Willamette Hazelnut Inc.</div>
-    <div class="info">
+  </head>
+  <body>
+  <div class="banner">
+    <img src="Hazelnuts inshell.png" alt="Hazelnuts decorative">
+  </div>
+  <header class="page-header">
+    <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
+    <h1 class="title">
+      <span style="color: #964B00;">HAZELNUT</span><br>
+      <span style="color: #006400;">GROWER AGREEMENT</span>
+    </h1>
+    <div class="contact">
+      Mailing address:<br>
       14975 NE Tangen Rd<br>
       Newberg, Oregon, 97132<br>
       TEL (503) 538 9256<br>
@@ -181,7 +206,7 @@
       www.whazelnut.com
     </div>
   </header>
-  <h1 class="title">HAZELNUT GROWER AGREEMENT</h1>
+<form>
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name</label>
