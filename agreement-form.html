@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hazelnut Grower Agreement - Willamette Hazelnut Inc.</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
   <style>
     html, body {
       max-width: 100%;
@@ -150,7 +150,7 @@
     margin-top: -8px;
     margin-bottom: 12px;
   }
-  .legal-text {
+.legal-text {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
@@ -174,11 +174,19 @@
     width: 45%;
     text-align: center;
   }
-.signature-box {
+.signature-input {
     width: 100%;
-    height: 80px;
     border: 1px solid #333;
-    margin-bottomL 4px;
+    padding: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4em;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .signature-caption {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9em;
   }
   .signature-lines.single {
     justify-content: center;
@@ -186,6 +194,7 @@
   .signature-lines.single div {
     width: 60%;
   }
+</style>
   </head>
   <body>
   <div class="banner">
@@ -206,7 +215,7 @@
       www.whazelnut.com
     </div>
   </header>
-<form>
+  <form>
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name</label>
@@ -223,7 +232,6 @@
           <label for="city">City</label>
           <input id="city" type="text" name="city">
         </div>
-        <div>
         <div class="inline">
           <div>
             <label for="state">State</label>
@@ -298,14 +306,15 @@
   <div class="legal-text">
     <p>Willamette Hazelnut, Inc. (hereafter referred to as Buyer) agrees to buy from Grower and Grower agrees to sell to Buyer the Hazelnut crop (from the described above properties) for the duration hereof. Payment will be made in accordance to the most recent version of the Hazelnut Growers Bargaining Association and Member-Growers&rsquo; Contract with Buyer. Grower assumes all risks of loss, damage, or deterioration of any Hazelnuts occurring prior to final acceptance thereof by Buyer. Grower warrants that Grower is the sole owner of the above described hazelnut crop free of encumbrances; that Grower has not previously contracted to sell or deliver any of said hazelnuts to any other person, that Grower shall not during the durations of this contract either encumber or contract for delivery to any other person the production above described; and that Grower shall deliver said Hazelnuts to Buyer free of all encumbrances. Grower warrants and represents that chemicals and fertilizer applied to acreage contracted herein, have been registered for use on Hazelnuts, and that Good Agricultural Practices (GAP) will be followed in all phases of production and harvesting of Hazelnuts delivered to Buyer. Buyer will refuse to accept delivery of any Lot known to have been treated with chemicals or fertilizer not registered for use on hazelnuts or otherwise not produced and harvested in accordance with GAP. If Grower elects not to participate in Buyer&rsquo;s Cash Advance Payment Program, it is agreed that in the event Grower is unable to deliver said Hazelnuts to Buyer, on account of destruction by floods, weather conditions, or any unavoidable casualties, or in the event that Buyer shall be unable to process, handle, or ship said Hazelnuts on account of quarantine or other governmental restrictions, railroad or labor strikes, fire or other unavoidable casualties, or inability to get supplies on account of such restrictions, strikes, fires, or unavoidable casualties, then this contract shall be null and void upon written notice by either party to the other party or such inability to perform and the reason therefore.</p>
   </div>
-      <div class="signature-box"></div>
+
+  <div class="signature-lines">
     <div>
-            <div class="signature-line"></div>
-      <span>Buyer: Willamette Hazelnut Inc.</span>
+      <input type="text" class="signature-input">
+      <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
     </div>
     <div>
-      <div class="signature-box"></div>
-      <span>Grower:</span>
+      <input type="text" class="signature-input">
+      <span class="signature-caption">Grower:</span>
     </div>
   </div>
 
@@ -321,8 +330,8 @@
     </div>
   <div class="signature-lines single">
     <div>
-      <div class="signature-box"></div>
-      <span>Grower's Signature</span>
+      <input type="text" class="signature-input">
+      <span class="signature-caption">Grower's Signature</span>
     </div>
   </div>
   </div>
