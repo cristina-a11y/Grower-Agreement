@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hazelnut Grower Agreement - Willamette Hazelnut Inc.</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <style>
     html, body {
       max-width: 100%;
@@ -68,11 +70,14 @@
       display: block;
       margin-bottom: -2px;
     }
-    .title .agreement {
-      font-size: 1.2em;
-      display: block;
-      letter-spacing: 0.1em;
-    }
+  .title .agreement {
+    font-size: 1.2em;
+    display: block;
+    letter-spacing: 0.1em;
+  }
+  .required {
+    color: red;
+  }
   form {
     max-width: 1000px;
     margin: auto;
@@ -266,11 +271,15 @@
     width: 100%;
     border: 1px solid #333;
     padding: 10px;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Lobster Two', cursive;
     font-size: 1.4em;
     font-weight: bold;
     text-align: center;
     border-radius: 4px;
+  }
+  .signature-input[disabled] {
+    background: #eee;
+    color: #666;
   }
   .signature-caption {
     display: block;
@@ -325,48 +334,48 @@
 <form action="mailto:cristina@willamettehazelnuts.com" method="post" enctype="text/plain">
   <div class="form-columns">
     <div class="col">
-      <label for="growerName">Grower Name</label>
-      <input id="growerName" type="text" name="growerName">
+      <label for="growerName">Grower Name <span class="required">*</span></label>
+      <input id="growerName" type="text" name="growerName" required>
 
       <label for="contactName">Contact Name <span class="small">(if needed)</span></label>
       <input id="contactName" type="text" name="contactName">
 
-      <label for="address">Mailing Address</label>
-      <input id="address" type="text" name="address">
+      <label for="address">Mailing Address <span class="required">*</span></label>
+      <input id="address" type="text" name="address" required>
 
   </div>
   <div class="col">
-      <label for="cropYear">Crop Year</label>
-      <input id="cropYear" type="text" name="cropYear">
+      <label for="cropYear">Crop Year <span class="required">*</span></label>
+      <input id="cropYear" type="text" name="cropYear" required>
 
       <label for="date">Date</label>
       <input id="date" type="date" name="date">
 
-      <label for="phoneDay">Phone (Day)</label>
-      <input id="phoneDay" type="tel" name="phoneDay">
+      <label for="phoneDay">Phone (Day) <span class="required">*</span></label>
+      <input id="phoneDay" type="tel" name="phoneDay" required>
 
   </div>
   </div>
 
   <div class="inline full-line">
     <div>
-      <label for="city">City</label>
-      <input id="city" type="text" name="city">
+      <label for="city">City <span class="required">*</span></label>
+      <input id="city" type="text" name="city" required>
     </div>
     <div>
-      <label for="state">State</label>
-      <input id="state" type="text" name="state">
+      <label for="state">State <span class="required">*</span></label>
+      <input id="state" type="text" name="state" required>
     </div>
     <div>
-      <label for="zip">Zip</label>
-      <input id="zip" type="text" name="zip">
+      <label for="zip">Zip <span class="required">*</span></label>
+      <input id="zip" type="text" name="zip" required>
     </div>
   </div>
 
   <div class="inline full-line">
     <div>
-      <label for="email">Email Address</label>
-      <input id="email" type="email" name="email">
+      <label for="email">Email Address <span class="required">*</span></label>
+      <input id="email" type="email" name="email" required>
     </div>
     <div class="radio-group">
       <span class="radio-label">HGBA Member</span>
@@ -378,14 +387,14 @@
   <table>
     <thead>
       <tr>
-        <th>Orchard Name</th>
+        <th>Orchard Name <span class="required">*</span></th>
         <th>Acreage</th>
-        <th>Variety</th>
-        <th>Planting Year</th>
+        <th>Variety <span class="required">*</span></th>
+        <th>Planting Year <span class="required">*</span></th>
       </tr>
     </thead>
     <tbody>
-      <tr><td><input type="text" name="orchard1"></td><td><input type="text" name="acreage1"></td><td><input type="text" name="variety1"></td><td><input type="text" name="year1"></td></tr>
+      <tr><td><input type="text" name="orchard1" required></td><td><input type="text" name="acreage1"></td><td><input type="text" name="variety1" required></td><td><input type="text" name="year1" required></td></tr>
       <tr><td><input type="text" name="orchard2"></td><td><input type="text" name="acreage2"></td><td><input type="text" name="variety2"></td><td><input type="text" name="year2"></td></tr>
       <tr><td><input type="text" name="orchard3"></td><td><input type="text" name="acreage3"></td><td><input type="text" name="variety3"></td><td><input type="text" name="year3"></td></tr>
       <tr><td><input type="text" name="orchard4"></td><td><input type="text" name="acreage4"></td><td><input type="text" name="variety4"></td><td><input type="text" name="year4"></td></tr>
@@ -411,11 +420,11 @@
   </div>
 
   <div class="signature-lines">
-      <div>
-        <input type="text" class="signature-input">
-        <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
-        <span class="signature-note">Type full name</span>
-      </div>
+        <div>
+          <input type="text" class="signature-input" value="Willamette Hazelnut Inc." disabled>
+          <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
+          <span class="signature-note">Type full name</span>
+        </div>
       <div>
         <input type="text" class="signature-input">
         <span class="signature-caption">Grower's Signature</span>
