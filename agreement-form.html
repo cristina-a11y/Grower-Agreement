@@ -26,6 +26,10 @@
       max-width: 1000px;
       margin: auto;
     }
+      .required-label::after {
+  content: " *";
+  color: red;
+}
     .page-header {
       display: flex;
       justify-content: space-between;
@@ -349,10 +353,10 @@
       <input id="cropYear" type="text" name="cropYear" required>
 
       <label for="date">Date</label>
-      <input id="date" type="date" name="date">
+      <input id="date" type="date" name="date" required>
 
       <label for="phoneDay">Phone (Day)</label>
-      <input id="phoneDay" type="tel" name="phoneDay">
+      <input id="phoneDay" type="tel" name="phoneDay" required>
 
   </div>
   </div>
@@ -360,22 +364,22 @@
   <div class="inline full-line">
     <div>
       <label for="city">City</label>
-      <input id="city" type="text" name="city">
+      <input id="city" type="text" name="city" required>
     </div>
     <div>
       <label for="state">State</label>
-      <input id="state" type="text" name="state">
+      <input id="state" type="text" name="state" required>
     </div>
     <div>
       <label for="zip">Zip</label>
-      <input id="zip" type="text" name="zip">
+      <input id="zip" type="text" name="zip" required>
     </div>
   </div>
 
   <div class="inline full-line">
     <div>
       <label for="email">Email Address</label>
-      <input id="email" type="email" name="email">
+      <input id="email" type="email" name="email" required>
     </div>
     <div class="radio-group">
       <span class="radio-label">HGBA Member</span>
@@ -394,7 +398,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><input type="text" name="orchard1"></td><td><input type="text" name="acreage1"></td><td><input type="text" name="variety1"></td><td><input type="text" name="year1"></td></tr>
+<tr>
+  <td><input type="text" name="orchard1" required></td>
+  <td><input type="text" name="acreage1"></td>
+  <td><input type="text" name="variety1" required></td>
+  <td><input type="text" name="year1" required></td>
+</tr>
       <tr><td><input type="text" name="orchard2"></td><td><input type="text" name="acreage2"></td><td><input type="text" name="variety2"></td><td><input type="text" name="year2"></td></tr>
       <tr><td><input type="text" name="orchard3"></td><td><input type="text" name="acreage3"></td><td><input type="text" name="variety3"></td><td><input type="text" name="year3"></td></tr>
       <tr><td><input type="text" name="orchard4"></td><td><input type="text" name="acreage4"></td><td><input type="text" name="variety4"></td><td><input type="text" name="year4"></td></tr>
@@ -421,9 +430,9 @@
 
   <div class="signature-lines">
       <div>
-        <input type="text" class="signature-input">
-        <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
-        <span class="signature-note">Type full name</span>
+<input type="text" class="signature-input" value="Willamette Hazelnut Inc." disabled>
+<span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
+<span class="signature-note">(Digital signature by company)</span>
       </div>
       <div>
         <input type="text" class="signature-input">
