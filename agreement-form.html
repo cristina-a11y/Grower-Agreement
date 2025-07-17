@@ -1,36 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hazelnut Grower Agreement</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazelnut Grower Agreement - Willamette Hazelnut Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
   <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
     body {
+      font-family: 'Libre Baskerville', serif;
+      background: #f7f7f7;
       margin: 0;
-      padding: 0;
-      font-family: 'Georgia', serif;
-      background-color: #f9f9f9;
+      padding: 20px;
+      color: #333;
     }
-    main {
-      display: flex;
-      justify-content: center;
-      padding: 2rem;
-    }
-    iframe {
+    .banner img {
       width: 100%;
-      max-width: 900px;
-      height: 1400px;
-      border: none;
+      display: block;
+      margin: 0 auto 10px auto;
     }
-  </style>
-</head>
-<body>
-  <main>
-    <iframe
-      title="HAZELNUT GROWER AGREEMENT"
-      src="https://www.jotform.com/sign/251917692440057/invite/01k0cpp958edae9b52ad1a3fbe?signEmbed=1"
-      allowfullscreen>
-    </iframe>
-  </main>
+    .header-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .page-header .logo {
+      max-width: 180px;
+    }
+    .page-header h1 {
+      margin: 0;
+      text-align: center;
+      flex: 1;
+    }
+    .page-header .contact {
+      text-align: right;
+      color: #264d19; /* dark green */
+      line-height: 1.3;
+      font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      .page-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .page-header .contact {
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #4b2e2e;
+      line-height: 1;
+    }
+    .title .hazel {
+      font-size: 2em;
+      display: block;
+      margin-bottom: -2px;
+    }
+    .title .agreement {
+      font-size: 1.2em;
+      display: block;
+      letter-spacing: 0.1em;
+    }
+  form {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #264d19;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+  .inline {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+  }
+  .inline > div {
+    min-width: 100px;
+    flex: 1;
+  }
+  .full-line {
+    width: 100%;
+  }
+  .form-columns {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  .form-columns .col {
+    min-width: 250px;
+    flex: 1;
+  }
+  .small {
+    font-size: 0.8em;
+    font-style: italic;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left;
+  }
+  th {
+    background: #264d19;
+    color: #fff;
+  }
+  td input {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .radio-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .radio-group label {
+    margin-right: 10px;
+    font-weight: normal;
+  }
+  .radio-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .signature {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature div {
+    width: 45%;
+  }
+  .signature input {
+    width: 100%;
+  }
+  h2 {
+    margin-top: 30px;
+    color: #4b2e2e;
+  }
+  .note {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: -8px;
+    margin-bottom: 12px;
+  }
+.legal-text {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.4;
+    font-size: 0.85em;
+    background: #e6f5e6;
+    color: #4b2e2e;
+    text-align: justify;
+  }
+  .cash-section {
+    margin-top: 40px;
+    border-top: 2px solid #4b2e2e;
+    padding-top: 20px;
+  }
+  .cash-section h2 {
+    background: #87461f;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .split-section {
+    margin-top: 40px;
+  }
+  .split-section h2 {
+    background: #87461f;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .split-info {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+  .split-block-title {
+    background: rgba(38,77,25,0.2);
+    color: #4b2e2e;
+    padding: 8px;
+    margin: 12px 0;
+    text-transform: uppercase;
+  }
+  .split-block {
+    margin-bottom: 20px;
+  }
+  .add-section {
+    margin-top: 40px;
+    border-top: 2px solid #4b2e2e;
+    padding-top: 20px;
+  }
+    .add-section h2 {
+    background: #87461f;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .add-section h2 .optional {
+    font-size: 0.8em;
+    font-style: italic;
+    text-transform: none;
+  }
+  .signature-lines {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature-lines div {
+    width: 45%;
+    text-align: center;
+  }
+.signature-input {
+    width: 100%;
+    border: 1px solid #333;
+    padding: 10px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .signature-caption {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9em;
+  }
+  .signature-note {
+    font-size: 0.8em;
+    display: block;
+    margin-top: 2px;
+  }
+  .signature-lines.single {
+    justify-content: center;
+  }
+  .signature-lines.single div {
+    width: 60%;
+  }
+
+.submit-btn {
+  background: #32CD32;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin: 40px auto 0 auto;
+}
+
+  }
+</style>
+  </head>
+  <body>
+  <div class="header-container">
+  <div class="banner">
+    <img src="Hazelnut-inshell.png" alt="Hazelnuts decorative">
+  </div>
+  <div class="page-header">
+    <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
+    <h1 class="title">
+      <span class="hazel" style="color: #964B00;">HAZELNUTS</span><br>
+      <span class="agreement" style="color: #006400;">GROWER AGREEMENT</span>
+    </h1>
+    <div class="contact">
+      <strong>Mailing Address:</strong><br>
+      14975 NE Tangen Rd<br>
+      Newberg, Oregon, 97132<br>
+      TEL (503) 538 9256<br>
+      FAX (888) 769 8874<br>
+      <strong>www.whazelnut.com</strong>
+    </div>
+  </div>
+</div>
+
+<form action="https://formsubmit.co/cristina@willamettehazelnuts.com" method="POST">
+<input type="hidden" name="_subject" value="New Hazelnut Grower Agreement Submission">
+<input type="hidden" name="_template" value="table">
+ <input type="hidden" name="_format" value="pdf">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_autoresponse" value="Thank you for submitting your Hazelnut Grower Agreement to Willamette Hazelnut Inc.&#10;&#10;We have received your information successfully. A member of our team will review your submission and contact you shortly if any additional details are needed.&#10;&#10;If you have any questions in the meantime, feel free to reach out to us at (503) 538-9256 or by replying to this email.&#10;&#10;Best regards,&#10;Willamette Hazelnut Inc.&#10;14975 NE Tangen Rd, Newberg, Oregon 97132&#10;www.whazelnut.com">
+  <div class="form-columns">
+    <div class="col">
+      <label for="growerName">Grower Name</label>
+      <input id="growerName" type="text" name="growerName">
+
+      <label for="contactName">Contact Name <span class="small">(if needed)</span></label>
+      <input id="contactName" type="text" name="contactName">
+
+      <label for="address">Mailing Address</label>
+      <input id="address" type="text" name="address">
+
+  </div>
+  <div class="col">
+      <label for="cropYear">Crop Year</label>
+      <input id="cropYear" type="text" name="cropYear">
+
+      <label for="date">Date</label>
+      <input id="date" type="date" name="date">
+
+      <label for="phoneDay">Phone (Day)</label>
+      <input id="phoneDay" type="tel" name="phoneDay">
+
+  </div>
+  </div>
+
+  <div class="inline full-line">
+    <div>
+      <label for="city">City</label>
+      <input id="city" type="text" name="city">
+    </div>
+    <div>
+      <label for="state">State</label>
+      <input id="state" type="text" name="state">
+    </div>
+    <div>
+      <label for="zip">Zip</label>
+      <input id="zip" type="text" name="zip">
+    </div>
+  </div>
+
+  <div class="inline full-line">
+    <div>
+      <label for="email">Email Address</label>
+      <input id="email" type="email" name="email">
+    </div>
+    <div class="radio-group">
+      <span class="radio-label">HGBA Member</span>
+      <label><input type="radio" name="hgba" value="yes"> Yes</label>
+      <label><input type="radio" name="hgba" value="no"> No</label>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Orchard Name</th>
+        <th>Acreage</th>
+        <th>Variety</th>
+        <th>Planting Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><input type="text" name="orchard1"></td><td><input type="text" name="acreage1"></td><td><input type="text" name="variety1"></td><td><input type="text" name="year1"></td></tr>
+      <tr><td><input type="text" name="orchard2"></td><td><input type="text" name="acreage2"></td><td><input type="text" name="variety2"></td><td><input type="text" name="year2"></td></tr>
+      <tr><td><input type="text" name="orchard3"></td><td><input type="text" name="acreage3"></td><td><input type="text" name="variety3"></td><td><input type="text" name="year3"></td></tr>
+      <tr><td><input type="text" name="orchard4"></td><td><input type="text" name="acreage4"></td><td><input type="text" name="variety4"></td><td><input type="text" name="year4"></td></tr>
+      <tr><td><input type="text" name="orchard5"></td><td><input type="text" name="acreage5"></td><td><input type="text" name="variety5"></td><td><input type="text" name="year5"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="radio-group">
+    <span class="radio-label">Do Any of Your Orchards Require an Orchard Payment Split?</span>
+    <label><input type="radio" name="paymentSplit" value="yes"> Yes</label>
+    <label><input type="radio" name="paymentSplit" value="no"> No</label>
+  </div>
+
+  <label for="payable">Check Payable to:</label>
+  <input id="payable" type="text" name="checkPayable">
+  <p class="note">Minimum price paid and payment date will be per Willamette Hazelnut Inc. Company&rsquo;s published policy.</p>
+  <label for="receivedAt">Hazelnuts Received At</label>
+  <input id="receivedAt" type="text" name="receivedAt">
+
+
+  <div class="legal-text">
+    <p>Willamette Hazelnut, Inc. (hereafter referred to as Buyer) agrees to buy from Grower and Grower agrees to sell to Buyer the Hazelnut crop (from the described above properties) for the duration hereof. Payment will be made in accordance to the most recent version of the Hazelnut Growers Bargaining Association and Member-Growers&rsquo; Contract with Buyer. Grower assumes all risks of loss, damage, or deterioration of any Hazelnuts occurring prior to final acceptance thereof by Buyer. Grower warrants that Grower is the sole owner of the above described hazelnut crop free of encumbrances; that Grower has not previously contracted to sell or deliver any of said hazelnuts to any other person, that Grower shall not during the durations of this contract either encumber or contract for delivery to any other person the production above described; and that Grower shall deliver said Hazelnuts to Buyer free of all encumbrances. Grower warrants and represents that chemicals and fertilizer applied to acreage contracted herein, have been registered for use on Hazelnuts, and that Good Agricultural Practices (GAP) will be followed in all phases of production and harvesting of Hazelnuts delivered to Buyer. Buyer will refuse to accept delivery of any Lot known to have been treated with chemicals or fertilizer not registered for use on hazelnuts or otherwise not produced and harvested in accordance with GAP. If Grower elects not to participate in Buyer&rsquo;s Cash Advance Payment Program, it is agreed that in the event Grower is unable to deliver said Hazelnuts to Buyer, on account of destruction by floods, weather conditions, or any unavoidable casualties, or in the event that Buyer shall be unable to process, handle, or ship said Hazelnuts on account of quarantine or other governmental restrictions, railroad or labor strikes, fire or other unavoidable casualties, or inability to get supplies on account of such restrictions, strikes, fires, or unavoidable casualties, then this contract shall be null and void upon written notice by either party to the other party or such inability to perform and the reason therefore.</p>
+  </div>
+
+  <div class="signature-lines">
+      <div>
+        <input type="text" class="signature-input">
+        <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
+        <span class="signature-note">Type full name</span>
+      </div>
+      <div>
+        <input type="text" class="signature-input">
+        <span class="signature-caption">Grower's Signature</span>
+        <span class="signature-note">Type full name</span>
+      </div>
+  </div>
+
+  <div class="cash-section">
+    <h2>CASH ADVANCE PROGRAM</h2>
+    <div class="legal-text">
+      <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
+    </div>
+    <div class="radio-group">
+      <span class="radio-label">Will You Participate in the Cash Advance Program?</span>
+      <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
+      <label><input type="radio" name="cashAdvance" value="no"> No</label>
+    </div>
+  <div class="signature-lines single">
+      <div>
+        <input type="text" class="signature-input">
+        <span class="signature-caption">Grower's Signature</span>
+        <span class="signature-note">Type full name</span>
+      </div>
+  </div>
+  </div>
+
+
+  <div class="add-section">
+    <h2>ADDITIONAL ORCHARDS <span class="optional">(if needed)</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Orchard Name</th>
+          <th>Acreage</th>
+          <th>Variety</th>
+          <th>Planting Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><input type="text" name="addorchard1"></td><td><input type="text" name="addacreage1"></td><td><input type="text" name="addvariety1"></td><td><input type="text" name="addyear1"></td></tr>
+        <tr><td><input type="text" name="addorchard2"></td><td><input type="text" name="addacreage2"></td><td><input type="text" name="addvariety2"></td><td><input type="text" name="addyear2"></td></tr>
+        <tr><td><input type="text" name="addorchard3"></td><td><input type="text" name="addacreage3"></td><td><input type="text" name="addvariety3"></td><td><input type="text" name="addyear3"></td></tr>
+        <tr><td><input type="text" name="addorchard4"></td><td><input type="text" name="addacreage4"></td><td><input type="text" name="addvariety4"></td><td><input type="text" name="addyear4"></td></tr>
+        <tr><td><input type="text" name="addorchard5"></td><td><input type="text" name="addacreage5"></td><td><input type="text" name="addvariety5"></td><td><input type="text" name="addyear5"></td></tr>
+        <tr><td><input type="text" name="addorchard6"></td><td><input type="text" name="addacreage6"></td><td><input type="text" name="addvariety6"></td><td><input type="text" name="addyear6"></td></tr>
+        <tr><td><input type="text" name="addorchard7"></td><td><input type="text" name="addacreage7"></td><td><input type="text" name="addvariety7"></td><td><input type="text" name="addyear7"></td></tr>
+        <tr><td><input type="text" name="addorchard8"></td><td><input type="text" name="addacreage8"></td><td><input type="text" name="addvariety8"></td><td><input type="text" name="addyear8"></td></tr>
+        <tr><td><input type="text" name="addorchard9"></td><td><input type="text" name="addacreage9"></td><td><input type="text" name="addvariety9"></td><td><input type="text" name="addyear9"></td></tr>
+        <tr><td><input type="text" name="addorchard10"></td><td><input type="text" name="addacreage10"></td><td><input type="text" name="addvariety10"></td><td><input type="text" name="addyear10"></td></tr>
+        <tr><td><input type="text" name="addorchard11"></td><td><input type="text" name="addacreage11"></td><td><input type="text" name="addvariety11"></td><td><input type="text" name="addyear11"></td></tr>
+        <tr><td><input type="text" name="addorchard12"></td><td><input type="text" name="addacreage12"></td><td><input type="text" name="addvariety12"></td><td><input type="text" name="addyear12"></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="split-section">
+      <h2>ORCHARD SPLIT INFORMATION</h2>
+      <p class="split-info">By completing this section, I understand that my orchards recorded below will be split with a third-party based on the percentage I assign. The third-party indicated will be paid directly by Willamette Hazelnut Inc. in accordance with the Company&rsquo;s published policy.</p>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #1</div>
+        <label for="split1Orchard">Orchard Name</label>
+        <input id="split1Orchard" type="text" name="split1Orchard">
+        <label for="split1Third">Third-Party Grower Name</label>
+        <input id="split1Third" type="text" name="split1Third">
+        <label for="split1Percent">% To Be Paid to Third-Party</label>
+        <input id="split1Percent" type="text" name="split1Percent">
+        <label for="split1Address">Third-Party Mailing Address</label>
+        <input id="split1Address" type="text" name="split1Address">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #2</div>
+        <label for="split2Orchard">Orchard Name</label>
+        <input id="split2Orchard" type="text" name="split2Orchard">
+        <label for="split2Third">Third-Party Grower Name</label>
+        <input id="split2Third" type="text" name="split2Third">
+        <label for="split2Percent">% To Be Paid to Third-Party</label>
+        <input id="split2Percent" type="text" name="split2Percent">
+        <label for="split2Address">Third-Party Mailing Address</label>
+        <input id="split2Address" type="text" name="split2Address">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #3</div>
+        <label for="split3Orchard">Orchard Name</label>
+        <input id="split3Orchard" type="text" name="split3Orchard">
+        <label for="split3Third">Third-Party Grower Name</label>
+        <input id="split3Third" type="text" name="split3Third">
+        <label for="split3Percent">% To Be Paid to Third-Party</label>
+        <input id="split3Percent" type="text" name="split3Percent">
+        <label for="split3Address">Third-Party Mailing Address</label>
+        <input id="split3Address" type="text" name="split3Address">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #4</div>
+        <label for="split4Orchard">Orchard Name</label>
+        <input id="split4Orchard" type="text" name="split4Orchard">
+        <label for="split4Third">Third-Party Grower Name</label>
+        <input id="split4Third" type="text" name="split4Third">
+        <label for="split4Percent">% To Be Paid to Third-Party</label>
+        <input id="split4Percent" type="text" name="split4Percent">
+        <label for="split4Address">Third-Party Mailing Address</label>
+        <input id="split4Address" type="text" name="split4Address">
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+
+  </form>
 </body>
 </html>
