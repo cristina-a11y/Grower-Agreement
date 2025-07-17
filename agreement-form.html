@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hazelnut Grower Agreement - Willamette Hazelnut Inc.</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
   <style>
     html, body {
       max-width: 100%;
@@ -20,7 +20,7 @@
     .banner img {
       width: 100%;
       display: block;
-      margin: 0 auto 10px 0;
+      margin: 0 auto 10px auto;
     }
     .header-container {
       max-width: 1000px;
@@ -209,13 +209,13 @@
     margin-top: 40px;
   }
   .split-section h2 {
-    color: #2f602c;
+    background: rgba(38,77,25,0.2);
+    color: #4b2e2e;
     font-size: 1.2em;
     margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
     text-transform: uppercase;
-    border-bottom: 1px solid #a56c43;
-    padding-bottom: 4px;
-    text-align: left;
   }
   .split-info {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -250,6 +250,7 @@
     font-size: 0.8em;
     font-style: italic;
     text-transform: none;
+  }
   .signature-lines {
     margin: 30px 0;
     display: flex;
@@ -263,8 +264,9 @@
     width: 100%;
     border: 1px solid #333;
     padding: 10px;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Gloria Hallelujah', cursive;
     font-size: 1.4em;
+    font-weight: bold;
     text-align: center;
     border-radius: 4px;
   }
@@ -273,11 +275,26 @@
     margin-top: 4px;
     font-size: 0.9em;
   }
+  .signature-note {
+    font-size: 0.8em;
+    display: block;
+    margin-top: 2px;
+  }
   .signature-lines.single {
     justify-content: center;
   }
   .signature-lines.single div {
     width: 60%;
+  }
+
+  .submit-btn {
+    background: #32CD32;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 </style>
   </head>
@@ -303,7 +320,7 @@
   </div>
 </div>
 
-<form>
+<form action="mailto:michael@willamettehazelnuts.com" method="post" enctype="text/plain">
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name</label>
@@ -392,14 +409,16 @@
   </div>
 
   <div class="signature-lines">
-    <div>
-      <input type="text" class="signature-input">
-      <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
-    </div>
-    <div>
-      <input type="text" class="signature-input">
-      <span class="signature-caption">Grower's Signature</span>
-    </div>
+      <div>
+        <input type="text" class="signature-input">
+        <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
+        <span class="signature-note">Type full name</span>
+      </div>
+      <div>
+        <input type="text" class="signature-input">
+        <span class="signature-caption">Grower's Signature</span>
+        <span class="signature-note">Type full name</span>
+      </div>
   </div>
 
   <div class="cash-section">
@@ -408,71 +427,19 @@
       <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
     </div>
     <div class="radio-group">
-      <span class="radio-label">Will You Participate in the Cash Advance Program?</span>>
+      <span class="radio-label">Will You Participate in the Cash Advance Program?</span>
       <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
       <label><input type="radio" name="cashAdvance" value="no"> No</label>
     </div>
   <div class="signature-lines single">
-    <div>
-      <input type="text" class="signature-input">
-      <span class="signature-caption">Grower's Signature</span>
-    </div>
+      <div>
+        <input type="text" class="signature-input">
+        <span class="signature-caption">Grower's Signature</span>
+        <span class="signature-note">Type full name</span>
+      </div>
   </div>
   </div>
 
-
-    <div class="split-section">
-    <h2>ORCHARD SPLIT INFORMATION</h2>
-    <p class="split-info">By completing this section, I understand that my orchards recorded below will be split with a third-party based on the percentage I assign. The third-party indicated will be paid directly by Willamette Hazelnut Inc. in accordance with the Company&rsquo;s published policy.</p>
-
-    <div class="split-block">
-      <div class="split-block-title">SPLIT #1</div>
-      <label for="split1Orchard">Orchard Name</label>
-      <input id="split1Orchard" type="text" name="split1Orchard">
-      <label for="split1Third">Third-Party Grower Name</label>
-      <input id="split1Third" type="text" name="split1Third">
-      <label for="split1Percent">% To Be Paid to Third-Party</label>
-      <input id="split1Percent" type="text" name="split1Percent">
-      <label for="split1Address">Third-Party Mailing Address</label>
-      <input id="split1Address" type="text" name="split1Address">
-    </div>
-
-    <div class="split-block">
-      <div class="split-block-title">SPLIT #2</div>
-      <label for="split2Orchard">Orchard Name</label>
-      <input id="split2Orchard" type="text" name="split2Orchard">
-      <label for="split2Third">Third-Party Grower Name</label>
-      <input id="split2Third" type="text" name="split2Third">
-      <label for="split2Percent">% To Be Paid to Third-Party</label>
-      <input id="split2Percent" type="text" name="split2Percent">
-      <label for="split2Address">Third-Party Mailing Address</label>
-      <input id="split2Address" type="text" name="split2Address">
-    </div>
-
-    <div class="split-block">
-      <div class="split-block-title">SPLIT #3</div>
-      <label for="split3Orchard">Orchard Name</label>
-      <input id="split3Orchard" type="text" name="split3Orchard">
-      <label for="split3Third">Third-Party Grower Name</label>
-      <input id="split3Third" type="text" name="split3Third">
-      <label for="split3Percent">% To Be Paid to Third-Party</label>
-      <input id="split3Percent" type="text" name="split3Percent">
-      <label for="split3Address">Third-Party Mailing Address</label>
-      <input id="split3Address" type="text" name="split3Address">
-    </div>
-
-    <div class="split-block">
-      <div class="split-block-title">SPLIT #4</div>
-      <label for="split4Orchard">Orchard Name</label>
-      <input id="split4Orchard" type="text" name="split4Orchard">
-      <label for="split4Third">Third-Party Grower Name</label>
-      <input id="split4Third" type="text" name="split4Third">
-      <label for="split4Percent">% To Be Paid to Third-Party</label>
-      <input id="split4Percent" type="text" name="split4Percent">
-      <label for="split4Address">Third-Party Mailing Address</label>
-      <input id="split4Address" type="text" name="split4Address">
-    </div>
-  </div>
 
   <div class="add-section">
     <h2>ADDITIONAL ORCHARDS <span class="optional">(if needed)</span></h2>
@@ -500,8 +467,63 @@
         <tr><td><input type="text" name="addorchard12"></td><td><input type="text" name="addacreage12"></td><td><input type="text" name="addvariety12"></td><td><input type="text" name="addyear12"></td></tr>
       </tbody>
     </table>
-  </div>
+    </div>
 
-</form>
+    <div class="split-section">
+      <h2>ORCHARD SPLIT INFORMATION</h2>
+      <p class="split-info">By completing this section, I understand that my orchards recorded below will be split with a third-party based on the percentage I assign. The third-party indicated will be paid directly by Willamette Hazelnut Inc. in accordance with the Company&rsquo;s published policy.</p>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #1</div>
+        <label for="split1Orchard">Orchard Name</label>
+        <input id="split1Orchard" type="text" name="split1Orchard">
+        <label for="split1Third">Third-Party Grower Name</label>
+        <input id="split1Third" type="text" name="split1Third">
+        <label for="split1Percent">% To Be Paid to Third-Party</label>
+        <input id="split1Percent" type="text" name="split1Percent">
+        <label for="split1Address">Third-Party Mailing Address</label>
+        <input id="split1Address" type="text" name="split1Address">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #2</div>
+        <label for="split2Orchard">Orchard Name</label>
+        <input id="split2Orchard" type="text" name="split2Orchard">
+        <label for="split2Third">Third-Party Grower Name</label>
+        <input id="split2Third" type="text" name="split2Third">
+        <label for="split2Percent">% To Be Paid to Third-Party</label>
+        <input id="split2Percent" type="text" name="split2Percent">
+        <label for="split2Address">Third-Party Mailing Address</label>
+        <input id="split2Address" type="text" name="split2Address">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #3</div>
+        <label for="split3Orchard">Orchard Name</label>
+        <input id="split3Orchard" type="text" name="split3Orchard">
+        <label for="split3Third">Third-Party Grower Name</label>
+        <input id="split3Third" type="text" name="split3Third">
+        <label for="split3Percent">% To Be Paid to Third-Party</label>
+        <input id="split3Percent" type="text" name="split3Percent">
+        <label for="split3Address">Third-Party Mailing Address</label>
+        <input id="split3Address" type="text" name="split3Address">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #4</div>
+        <label for="split4Orchard">Orchard Name</label>
+        <input id="split4Orchard" type="text" name="split4Orchard">
+        <label for="split4Third">Third-Party Grower Name</label>
+        <input id="split4Third" type="text" name="split4Third">
+        <label for="split4Percent">% To Be Paid to Third-Party</label>
+        <input id="split4Percent" type="text" name="split4Percent">
+        <label for="split4Address">Third-Party Mailing Address</label>
+        <input id="split4Address" type="text" name="split4Address">
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+
+  </form>
 </body>
 </html>
