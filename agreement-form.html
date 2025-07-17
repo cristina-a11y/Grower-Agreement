@@ -364,17 +364,17 @@
   </div>
 </div>
 
-<form action="mailto:cristina@willamettehazelnuts.com" method="post" enctype="text/plain">
+<form action="mailto:cristina@willamettehazelnuts.com" method="post" enctype="text/plain" autocomplete="on">
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name <span class="required">*</span></label>
-      <input id="growerName" type="text" name="growerName" required>
+<input id="growerName" type="text" name="growerName" autocomplete="name" required>
 
       <label for="contactName">Contact Name <span class="small">(if needed)</span></label>
-      <input id="contactName" type="text" name="contactName">
+<input id="contactName" type="text" name="contactName" autocomplete="additional-name">
 
       <label for="address">Mailing Address <span class="required">*</span></label>
-      <input id="address" type="text" name="address" required>
+<input id="address" type="text" name="address" autocomplete="street-address" required>
 
   </div>
   <div class="col">
@@ -384,8 +384,8 @@
       <label for="date">Date</label>
       <input id="date" type="date" name="date">
 
-      <label for="phoneDay">Phone (Day) <span class="required">*</span></label>
-      <input id="phoneDay" type="tel" name="phoneDay" required>
+      <label for="phone">Phone <span class="required">*</span></label>
+<input id="phone" type="tel" name="phone" autocomplete="tel" required>
 
   </div>
   </div>
@@ -393,22 +393,22 @@
   <div class="inline full-line">
     <div>
       <label for="city">City <span class="required">*</span></label>
-      <input id="city" type="text" name="city" required>
+<input id="city" type="text" name="city" autocomplete="address-level2" required>
     </div>
     <div>
       <label for="state">State <span class="required">*</span></label>
-      <input id="state" type="text" name="state" required>
+<input id="state" type="text" name="state" autocomplete="address-level1" required>
     </div>
     <div>
       <label for="zip">Zip <span class="required">*</span></label>
-      <input id="zip" type="text" name="zip" required>
+<input id="zip" type="text" name="zip" autocomplete="postal-code" required>
     </div>
   </div>
 
   <div class="inline full-line">
     <div>
       <label for="email">Email Address <span class="required">*</span></label>
-      <input id="email" type="email" name="email" required>
+<input id="email" type="email" name="email" autocomplete="email" required>
     </div>
     <div class="radio-group">
       <span class="radio-label">HGBA Member</span>
