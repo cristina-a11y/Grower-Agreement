@@ -12,6 +12,9 @@
       max-width: 100%;
       overflow-x: hidden;
     }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Libre Baskerville', serif;
       background: #f7f7f7;
@@ -57,6 +60,20 @@
       .page-header .contact {
         text-align: center;
         margin-top: 10px;
+      }
+      .form-columns,
+      .inline,
+      .signature-lines {
+        flex-direction: column;
+      }
+      .form-columns .col,
+      .inline > div,
+      .signature-lines div {
+        width: 100%;
+      }
+      table {
+        display: block;
+        overflow-x: auto;
       }
     }
     .title {
