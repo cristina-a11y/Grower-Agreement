@@ -108,6 +108,9 @@
     min-width: 100px;
     flex: 1;
   }
+  .full-line {
+    width: 100%;
+  }
   .form-columns {
     flex-wrap: wrap;
     display: flex;
@@ -133,7 +136,8 @@
     text-align: left;
   }
   th {
-    background: #e1e1e1;
+    background: #264d19;
+    color: #fff;
   }
   td input {
     width: 100%;
@@ -143,16 +147,18 @@
   }
   .radio-group {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
   }
   .radio-group label {
-    display: inline-block;
     margin-right: 10px;
     font-weight: normal;
   }
-  .radio-group label:first-child {
-    display: block;
-    margin-bottom: 4px;
+  .radio-label {
     font-weight: bold;
+    margin-right: 10px;
   }
   .signature {
     margin-top: 40px;
@@ -182,7 +188,8 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     line-height: 1.4;
     font-size: 0.85em;
-    background: #f9f9f9;
+    background: #e6f5e6;
+    color: #4b2e2e;
     text-align: justify;
   }
   .cash-section {
@@ -196,6 +203,7 @@
     margin: 0 0 10px;
     padding: 8px;
     text-align: center;
+    text-transform: uppercase;
   }
   .signature-lines {
     margin: 30px 0;
@@ -262,22 +270,8 @@
       <label for="address">Mailing Address</label>
       <input id="address" type="text" name="address">
 
-      <div class="inline">
-        <div>
-          <label for="city">City</label>
-          <input id="city" type="text" name="city">
-        </div>
-        <div>
-          <label for="state">State</label>
-          <input id="state" type="text" name="state">
-        </div>
-        <div>
-          <label for="zip">Zip</label>
-          <input id="zip" type="text" name="zip">
-        </div>
-      </div>
-    </div>
-    <div class="col">
+  </div>
+  <div class="col">
       <label for="cropYear">Crop Year</label>
       <input id="cropYear" type="text" name="cropYear">
 
@@ -287,24 +281,36 @@
       <label for="phoneDay">Phone (Day)</label>
       <input id="phoneDay" type="tel" name="phoneDay">
 
+  </div>
+  </div>
+
+  <div class="inline full-line">
+    <div>
+      <label for="city">City</label>
+      <input id="city" type="text" name="city">
+    </div>
+    <div>
+      <label for="state">State</label>
+      <input id="state" type="text" name="state">
+    </div>
+    <div>
+      <label for="zip">Zip</label>
+      <input id="zip" type="text" name="zip">
     </div>
   </div>
 
-  <div class="inline">
+  <div class="inline full-line">
     <div>
       <label for="email">Email Address</label>
       <input id="email" type="email" name="email">
     </div>
-    <div>
-      <label>HGBA Member</label>
-      <div class="radio-group">
-        <label><input type="radio" name="hgba" value="yes"> Yes</label>
-        <label><input type="radio" name="hgba" value="no"> No</label>
-      </div>
+    <div class="radio-group">
+      <span class="radio-label">HGBA Member</span>
+      <label><input type="radio" name="hgba" value="yes"> Yes</label>
+      <label><input type="radio" name="hgba" value="no"> No</label>
     </div>
   </div>
 
-  <h2>Orchard Information</h2>
   <table>
     <thead>
       <tr>
@@ -324,7 +330,7 @@
   </table>
 
   <div class="radio-group">
-    <label>Do Any of Your Orchards Require an Orchard Payment Split?</label>
+    <span class="radio-label">Do Any of Your Orchards Require an Orchard Payment Split?</span>
     <label><input type="radio" name="paymentSplit" value="yes"> Yes</label>
     <label><input type="radio" name="paymentSplit" value="no"> No</label>
   </div>
@@ -347,17 +353,17 @@
     </div>
     <div>
       <input type="text" class="signature-input">
-      <span class="signature-caption">Grower:</span>
+      <span class="signature-caption">Grower's Signature</span>
     </div>
   </div>
 
   <div class="cash-section">
-    <h2>Cash Advance Program</h2>
+    <h2>CASH ADVANCE PROGRAM</h2>
     <div class="legal-text">
       <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
     </div>
     <div class="radio-group">
-      <label>Will You Participate in the Cash Advance Program?</label>
+      <span class="radio-label">Will You Participate in the Cash Advance Program?</span>
       <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
       <label><input type="radio" name="cashAdvance" value="no"> No</label>
     </div>
