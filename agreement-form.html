@@ -619,7 +619,7 @@
     document.getElementById('growerSig1Data').value = growerPad1.isEmpty() ? '' : growerPad1.toDataURL();
     document.getElementById('growerSig2Data').value = growerPad2.isEmpty() ? '' : growerPad2.toDataURL();
 
-    emailjs.sendForm('service_d3txw7k', 'template_8d7vx5l', this)
+    emailjs.sendForm('service_d3txw7k', 'responses_template', this)
       .then(function () {
         alert('Form successfully sent!');
         form.reset();
