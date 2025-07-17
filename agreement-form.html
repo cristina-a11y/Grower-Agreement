@@ -28,10 +28,6 @@
       max-width: 1000px;
       margin: auto;
     }
-      .required-label::after {
-  content: " *";
-  color: red;
-}
     .page-header {
       display: flex;
       justify-content: space-between;
@@ -82,7 +78,6 @@
   .required {
     color: red;
   }
-    }
   form {
     max-width: 1000px;
     margin: auto;
@@ -249,7 +244,7 @@
     border-top: 2px solid #4b2e2e;
     padding-top: 20px;
   }
-    .add-section h2 {
+  .add-section h2 {
     background: #87461f;
     color: #fff;
     font-size: 1.2em;
@@ -278,7 +273,7 @@
     padding: 10px;
     font-family: 'Lobster Two', cursive;
     font-size: 1.4em;
-    font-weight: 700;
+    font-weight: bold;
     text-align: center;
     border-radius: 4px;
   }
@@ -303,19 +298,14 @@
     width: 60%;
   }
 
-.submit-btn {
-  background: #32CD32;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  padding: 14px 32px;
-  font-size: 1.2em;
-  border-radius: 6px;
-  cursor: pointer;
-  display: block;
-  margin: 40px auto 0 auto;
-}
-
+  .submit-btn {
+    background: #32CD32;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 </style>
   </head>
@@ -327,7 +317,7 @@
   <div class="page-header">
     <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
     <h1 class="title">
-      <span class="hazel" style="color: #964B00;">HAZELNUT</span><br>
+      <span class="hazel" style="color: #964B00;">HAZELNUTS</span><br>
       <span class="agreement" style="color: #006400;">GROWER AGREEMENT</span>
     </h1>
     <div class="contact">
@@ -335,17 +325,13 @@
       14975 NE Tangen Rd<br>
       Newberg, Oregon, 97132<br>
       TEL (503) 538 9256<br>
+      FAX (888) 769 8874<br>
       <strong>www.whazelnut.com</strong>
     </div>
   </div>
 </div>
 
-<form action="https://formsubmit.co/michael@willamettehazelnuts.com" method="POST">
-<input type="hidden" name="_subject" value="New Hazelnut Grower Agreement Submission">
-<input type="hidden" name="_template" value="table">
- <input type="hidden" name="_format" value="pdf">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_autoresponse" value="Thank you for submitting your Hazelnut Grower Agreement to Willamette Hazelnut Inc.&#10;&#10;We have received your information successfully. A member of our team will review your submission and contact you shortly if any additional details are needed.&#10;&#10;If you have any questions in the meantime, feel free to reach out to us at (503) 538-9256 or by replying to this email.&#10;&#10;Best regards,&#10;Willamette Hazelnut Inc.&#10;14975 NE Tangen Rd, Newberg, Oregon 97132&#10;www.whazelnut.com">
+<form action="mailto:cristina@willamettehazelnuts.com" method="post" enctype="text/plain">
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name <span class="required">*</span></label>
@@ -363,9 +349,9 @@
       <input id="cropYear" type="text" name="cropYear" required>
 
       <label for="date">Date</label>
-      <input id="date" type="date" name="date" required>
+      <input id="date" type="date" name="date">
 
-      <label for="phoneDay">Phone <span class="required">*</span></label>
+      <label for="phoneDay">Phone (Day) <span class="required">*</span></label>
       <input id="phoneDay" type="tel" name="phoneDay" required>
 
   </div>
@@ -401,7 +387,6 @@
   <table>
     <thead>
       <tr>
-        <th>Orchard Name</th>
         <th>Orchard Name <span class="required">*</span></th>
         <th>Acreage</th>
         <th>Variety <span class="required">*</span></th>
