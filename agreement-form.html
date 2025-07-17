@@ -18,49 +18,51 @@
       color: #333;
     }
     .banner img {
-      width: 50%;
+      width: 33%;
       display: block;
       margin: 0 0 10px 0;
     }
-    .form-header {
+    .page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
-    .form-header .logo {
+    .page-header .logo {
       max-width: 160px;
     }
-    .form-header h1 {
+    .page-header h1 {
       margin: 0;
       text-align: center;
       flex: 1;
     }
-    .form-header .contact {
+    .page-header .contact {
       text-align: right;
       color: #264d19; /* dark green */
       line-height: 1.3;
       font-size: 0.9em;
     }
     @media (max-width: 600px) {
-      .form-header {
+      .page-header {
         flex-direction: column;
         text-align: center;
       }
-      .form-header .contact {
+      .page-header .contact {
         text-align: center;
         margin-top: 10px;
       }
     }
     .title {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       color: #4b2e2e;
+      line-height: 1;
     }
     .title .hazel {
-      font-size: 2.4em;
+      font-size: 2em;
       display: block;
+      margin-bottom: -4px;
     }
     .title .agreement {
       font-size: 1.2em;
@@ -213,24 +215,24 @@
   </head>
   <body>
   <div class="banner">
-    <img src="Hazelnuts inshell.png" alt="Hazelnuts decorative">
+    <img src="Hazelnut-inshell.png" alt="Hazelnuts decorative">
   </div>
-  <h1 class="title">
-    <span class="hazel" style="color: #964B00;">HAZELNUTS</span><br>
-    <span class="agreement" style="color: #006400;">GROWER AGREEMENT</span>
-  </h1>
-  <form>
-    <div class="form-header">
-      <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
-      <div class="contact">
-        Mailing address:<br>
-        14975 NE Tangen Rd<br>
-        Newberg, Oregon, 97132<br>
-        TEL (503) 538 9256<br>
-        FAX (888) 769 8874<br>
-        www.whazelnut.com
-      </div>
+  <div class="page-header">
+    <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
+    <h1 class="title">
+      <span class="hazel" style="color: #964B00;">HAZELNUTS</span><br>
+      <span class="agreement" style="color: #006400;">GROWER AGREEMENT</span>
+    </h1>
+    <div class="contact">
+      <strong>Mailing Address:</strong><br>
+      14975 NE Tangen Rd<br>
+      Newberg, Oregon, 97132<br>
+      TEL (503) 538 9256<br>
+      FAX (888) 769 8874<br>
+      <strong>www.whazelnut.com</strong>
     </div>
+  </div>
+  <form>
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name</label>
