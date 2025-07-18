@@ -607,6 +607,9 @@
 <script>
   // Inicializar EmailJS
    emailjs.init("n9hL-Lm0sWOYQrYgi");
+    const SERVICE_ID = "service_d3txw7k"; // replace with your EmailJS service ID
+    const GROWER_TEMPLATE = "Hazelnut-Agreement"; // replace with your template ID
+    const RESPONSES_TEMPLATE = "responses_template"; // replace with your template ID for internal copies
     const growerPad1 = new SignaturePad(document.getElementById("growerSig1"));
     const growerPad2 = new SignaturePad(document.getElementById("growerSig2"));
     const form = document.getElementById("hazelnutForm");
@@ -614,12 +617,12 @@
       e.preventDefault();
       document.getElementById("growerSig1Data").value = growerPad1.isEmpty() ? "" : growerPad1.toDataURL();
       document.getElementById("growerSig2Data").value = growerPad2.isEmpty() ? "" : growerPad2.toDataURL();
-      emailjs.sendForm("service_d3txw7k", "Hazelnut-Agreement", this).then(()=>{
+      emailjs.sendForm(SERVICE_ID, GROWER_TEMPLATE, this).then(()=>{
         console.log("Email sent to grower");
       }, err => {
         console.error("Failed sending to grower", err);
       });
-      emailjs.sendForm("service_d3txw7k", "responses_template", this).then(()=>{
+      emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this).then(()=>{
         alert("Formulario enviado con éxito.");
         form.reset();
         growerPad1.clear();
@@ -631,4 +634,3 @@
 </script>
 </body>
 </html>
-
