@@ -512,7 +512,7 @@
       <div class="signature-container">
         <canvas id="growerSig2" class="signature-pad"></canvas>
         <button type="button" class="clear-btn" onclick="growerPad2.clear()">Clear</button>
-        <input type="hidden" name="cashSignature" id="growerSig2Data">
+        <input type="hidden" name="growerSig2Data" id="growerSig2Data">
         <span class="signature-caption">Grower's Signature</span>
       </div>
   </div>
@@ -606,27 +606,36 @@
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
   // Inicializar EmailJS
-  emailjs.init(n9hL-Lm0sWOYQrYgi); // ← pon aquí tu PUBLIC KEY de EmailJS
+  emailjs.init('n9hL-Lm0sWOYQrYgi'); // Tu public key
 
   const growerPad1 = new SignaturePad(document.getElementById('growerSig1'));
   const growerPad2 = new SignaturePad(document.getElementById('growerSig2'));
+  const form = document.getElementById('hazelnutForm');
 
-  const form = document.querySelector('form');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Asignar las firmas al input oculto
+    // Agregar las firmas como base64
     document.getElementById('growerSig1Data').value = growerPad1.isEmpty() ? '' : growerPad1.toDataURL();
     document.getElementById('growerSig2Data').value = growerPad2.isEmpty() ? '' : growerPad2.toDataURL();
 
+    // Enviar al grower
+    emailjs.sendForm('service_d3txw7k', 'Hazelnut-Agreement', this)
+      .then(() => {
+        console.log('Email sent to grower');
+      }, (error) => {
+        console.error('Failed sending to grower', error);
+      });
+
+    // Enviar a ustedes
     emailjs.sendForm('service_d3txw7k', 'responses_template', this)
-      .then(function () {
-        alert('Form successfully sent!');
+      .then(() => {
+        alert('Formulario enviado con éxito.');
         form.reset();
         growerPad1.clear();
         growerPad2.clear();
-      }, function (error) {
-        alert('Failed to send form. Error: ' + error.text);
+      }, (error) => {
+        alert('Error al enviar formulario: ' + error.text);
       });
   });
 </script>
