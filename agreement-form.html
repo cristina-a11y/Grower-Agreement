@@ -653,37 +653,36 @@ window.addEventListener("resize", () => {
 });
   const form = document.getElementById("hazelnutForm");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    // Validación de firmas
-    if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
-      alert("Por favor, asegúrate de firmar ambas secciones antes de enviar el formulario.");
-      return;
-    }
+  // Validar que ambas firmas estén completas
+  if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
+    alert("Please make sure both signature sections are completed before submitting the form.");
+    return;
+  }
 
-    // Convertir firmas a Base64
-    document.getElementById("growerSig1Data").value = growerPad1.toDataURL();
-    document.getElementById("growerSig2Data").value = growerPad2.toDataURL();
+  // Convertir firmas a base64
+  document.getElementById("growerSig1Data").value = growerPad1.toDataURL();
+  document.getElementById("growerSig2Data").value = growerPad2.toDataURL();
 
-    try {
-      // Enviar a grower
-      await emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form);
-      console.log("✅ Email enviado al grower");
-
-      // Enviar copia interna
-      await emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form);
-      console.log("✅ Email interno enviado");
-
-      alert("Formulario enviado con éxito.");
-      form.reset();
-      growerPad1.clear();
-      growerPad2.clear();
-    } catch (err) {
-      console.error("❌ Error al enviar formulario:", err);
-      alert("Error al enviar el formulario: " + err.text);
-    }
+  // Enviar al grower
+  emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, this).then(() => {
+    console.log("Email sent to grower");
+  }, err => {
+    console.error("Failed sending to grower", err);
   });
+
+  // Enviar copia interna
+  emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this).then(() => {
+    alert("Form submitted succesfully");
+    form.reset();
+    growerPad1.clear();
+    growerPad2.clear();
+  }, err => {
+    alert("There was an error sending the form: " + err.text);
+  });
+});
 </script>
 </body>
 </html>
