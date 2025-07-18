@@ -388,6 +388,13 @@
 
       <label for="date">Date</label>
       <input id="date" type="date" name="date">
+    <script>
+  const dateInput = document.getElementById("date");
+  if (dateInput) {
+    const today = new Date();
+    dateInput.value = today.toISOString().split("T")[0];
+  }
+</script>
 
       <label for="phone">Phone <span class="required">*</span></label>
 <input id="phone" type="tel" name="phone" autocomplete="tel" required>
@@ -612,43 +619,71 @@
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
   // Inicializar EmailJS
-   emailjs.init("n9hL-Lm0sWOYQrYgi");
-    const SERVICE_ID = "service_d3txw7k"; // replace with your EmailJS service ID
-    const HAZELNUT_AGREEMENT = "template_8d7vx5l"; // replace with your template ID
-    const RESPONSES_TEMPLATE = "template_14975"; // replace with your template ID for internal copies
-    const growerPad1 = new SignaturePad(document.getElementById("growerSig1"));
-    const growerPad2 = new SignaturePad(document.getElementById("growerSig2"));
-    const form = document.getElementById("hazelnutForm");
-form.addEventListener("submit", function(e){
-  e.preventDefault();
+  emailjs.init("n9hL-Lm0sWOYQrYgi");
 
-  // Validar que ambas firmas estén completas
-  if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
-    alert("Por favor, asegúrate de firmar ambas secciones antes de enviar el formulario.");
-    return;
-  }
+  const SERVICE_ID = "service_d3txw7k";
+  const HAZELNUT_AGREEMENT = "template_8d7vx5l";
+  const RESPONSES_TEMPLATE = "template_14975";
 
-  // Si están firmadas, convertir las firmas a base64
-  document.getElementById("growerSig1Data").value = growerPad1.toDataURL();
-  document.getElementById("growerSig2Data").value = growerPad2.toDataURL();
+const growerSig1Canvas = document.getElementById("growerSig1");
+const growerSig2Canvas = document.getElementById("growerSig2");
 
-  // Enviar copia al productor
-  emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, this).then(() => {
-    console.log("Email sent to grower");
-  }, err => {
-    console.error("Failed sending to grower", err);
-  });
+const growerPad1 = new SignaturePad(growerSig1Canvas);
+const growerPad2 = new SignaturePad(growerSig2Canvas);
 
-  // Enviar copia interna
-  emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this).then(() => {
-    alert("Formulario enviado con éxito.");
-    form.reset();
-    growerPad1.clear();
-    growerPad2.clear();
-  }, err => {
-    alert("Error al enviar formulario: " + err.text);
-  });
+// Función para ajustar el tamaño del canvas
+function resizeCanvas(canvas, pad) {
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  canvas.getContext("2d").scale(ratio, ratio);
+  pad.clear(); // Borra la firma previa al redimensionar
+}
+
+// Ajustar al cargar
+window.addEventListener("load", () => {
+  resizeCanvas(growerSig1Canvas, growerPad1);
+  resizeCanvas(growerSig2Canvas, growerPad2);
 });
+
+// Ajustar si se cambia tamaño ventana
+window.addEventListener("resize", () => {
+  resizeCanvas(growerSig1Canvas, growerPad1);
+  resizeCanvas(growerSig2Canvas, growerPad2);
+});
+  const form = document.getElementById("hazelnutForm");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // Validación de firmas
+    if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
+      alert("Por favor, asegúrate de firmar ambas secciones antes de enviar el formulario.");
+      return;
+    }
+
+    // Convertir firmas a Base64
+    document.getElementById("growerSig1Data").value = growerPad1.toDataURL();
+    document.getElementById("growerSig2Data").value = growerPad2.toDataURL();
+
+    try {
+      // Enviar a grower
+      await emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form);
+      console.log("✅ Email enviado al grower");
+
+      // Enviar copia interna
+      await emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form);
+      console.log("✅ Email interno enviado");
+
+      alert("Formulario enviado con éxito.");
+      form.reset();
+      growerPad1.clear();
+      growerPad2.clear();
+    } catch (err) {
+      console.error("❌ Error al enviar formulario:", err);
+      alert("Error al enviar el formulario: " + err.text);
+    }
+  });
 </script>
 </body>
 </html>
