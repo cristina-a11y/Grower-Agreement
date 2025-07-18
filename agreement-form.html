@@ -363,7 +363,7 @@
   </div>
 </div>
 
-<form action="mailto:cristina@willamettehazelnuts.com" method="post" enctype="text/plain" autocomplete="on">
+<form id="hazelnutForm" method="post">
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name <span class="required">*</span></label>
@@ -606,36 +606,26 @@
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
   // Inicializar EmailJS
-  emailjs.init('n9hL-Lm0sWOYQrYgi'); // Tu public key
-
-  const growerPad1 = new SignaturePad(document.getElementById('growerSig1'));
-  const growerPad2 = new SignaturePad(document.getElementById('growerSig2'));
-  const form = document.getElementById('hazelnutForm');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Agregar las firmas como base64
-    document.getElementById('growerSig1Data').value = growerPad1.isEmpty() ? '' : growerPad1.toDataURL();
-    document.getElementById('growerSig2Data').value = growerPad2.isEmpty() ? '' : growerPad2.toDataURL();
-
-    // Enviar al grower
-    emailjs.sendForm('service_d3txw7k', 'Hazelnut-Agreement', this)
-      .then(() => {
-        console.log('Email sent to grower');
-      }, (error) => {
-        console.error('Failed sending to grower', error);
+   emailjs.init("n9hL-Lm0sWOYQrYgi");
+    const growerPad1 = new SignaturePad(document.getElementById("growerSig1"));
+    const growerPad2 = new SignaturePad(document.getElementById("growerSig2"));
+    const form = document.getElementById("hazelnutForm");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      document.getElementById("growerSig1Data").value = growerPad1.isEmpty() ? "" : growerPad1.toDataURL();
+      document.getElementById("growerSig2Data").value = growerPad2.isEmpty() ? "" : growerPad2.toDataURL();
+      emailjs.sendForm("service_d3txw7k", "Hazelnut-Agreement", this).then(()=>{
+        console.log("Email sent to grower");
+      }, err => {
+        console.error("Failed sending to grower", err);
       });
-
-    // Enviar a ustedes
-    emailjs.sendForm('service_d3txw7k', 'responses_template', this)
-      .then(() => {
-        alert('Formulario enviado con éxito.');
+      emailjs.sendForm("service_d3txw7k", "responses_template", this).then(()=>{
+        alert("Formulario enviado con éxito.");
         form.reset();
         growerPad1.clear();
         growerPad2.clear();
-      }, (error) => {
-        alert('Error al enviar formulario: ' + error.text);
+      }, err => {
+        alert("Error al enviar formulario: " + err.text);
       });
   });
 </script>
