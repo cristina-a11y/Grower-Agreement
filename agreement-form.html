@@ -439,12 +439,31 @@
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td><input type="text" name="orchard1" placeholder="Orchard" required></td>
-    <td><input type="text" name="acreage1" placeholder="Acreage"></td>
-    <td><input type="text" name="variety1" placeholder="Variety" required></td>
-    <td><input type="text" name="year1" placeholder="Year" required></td>
-  </tr>
+<tr>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="orchard1" placeholder="Orchard" required>
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="acreage1" placeholder="Acreage">
+    </div>
+  </td>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="variety1" placeholder="Variety" required>
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="year1" placeholder="Year" required>
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+</tr>
   <tr>
     <td><input type="text" name="orchard2" placeholder="Orchard-2"></td>
     <td><input type="text" name="acreage2" placeholder="Acre-2"></td>
@@ -506,7 +525,7 @@
       <div class="signature-container">
         <canvas id="growerSig1" class="signature-pad"></canvas>
         <button type="button" class="clear-btn" onclick="growerPad1.clear()">Clear</button>
-        <input type="hidden" name="growerSignature" id="growerSig1Data">
+        <input type="hidden" name="growerSig1" id="growerSig1Data">
         <span class="signature-caption">Grower's Signature</span>
       </div>
   </div>
