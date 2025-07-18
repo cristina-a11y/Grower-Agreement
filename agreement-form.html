@@ -621,21 +621,31 @@
     const form = document.getElementById("hazelnutForm");
 form.addEventListener("submit", function(e){
   e.preventDefault();
-  document.getElementById("growerSig1Data").value = growerPad1.isEmpty() ? "" : growerPad1.toDataURL();
-  document.getElementById("growerSig2Data").value = growerPad2.isEmpty() ? "" : growerPad2.toDataURL();
 
-  // Enviar al productor primero
-  emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, this).then(() => {
+  // Validar que ambas firmas estén completas
+  if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
+    alert("Por favor, asegúrate de firmar ambas secciones antes de enviar el formulario.");
+    return;
+  }
+
+  // Si están firmadas, convertir las firmas a base64
+  document.getElementById("growerSig1Data").value = growerPad1.toDataURL();
+  document.getElementById("growerSig2Data").value = growerPad2.toDataURL();
+
+  // Enviar copia al productor
+  emailjs.sendForm(SERVICE_ID, GROWER_TEMPLATE, this).then(() => {
     console.log("Email sent to grower");
+  }, err => {
+    console.error("Failed sending to grower", err);
+  });
 
-    // Solo si el primero funciona, se manda el segundo
-    return emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this);
-  }).then(() => {
+  // Enviar copia interna
+  emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this).then(() => {
     alert("Formulario enviado con éxito.");
     form.reset();
     growerPad1.clear();
     growerPad2.clear();
-  }).catch(err => {
+  }, err => {
     alert("Error al enviar formulario: " + err.text);
   });
 });
