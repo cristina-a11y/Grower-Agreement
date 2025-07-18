@@ -678,30 +678,31 @@ form.addEventListener("submit", function(e){
     return;
   }
 
- // Convertir firmas a base64
-const sig1 = growerPad1.toDataURL();
-const sig2 = growerPad2.toDataURL();
-document.getElementById("growerSig1Data").value = sig1;
-document.getElementById("growerSig2Data").value = sig2;
+// Convertir firmas a base64
+  const sig1 = growerPad1.toDataURL();
+  const sig2 = growerPad2.toDataURL();
+  document.getElementById("growerSig1Data").value = sig1;
+  document.getElementById("growerSig2Data").value = sig2;
 
-// Esperar que los campos se actualicen visualmente antes de enviar
-requestAnimationFrame(() => {
-  // Enviar al grower
-  emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form).then(() => {
-    console.log("Email sent to grower");
-  }, err => {
-    console.error("Failed sending to grower", err);
-  });
+  // IMPORTANTE: Usa una pequeña pausa para asegurar que el DOM tenga los valores listos
+  setTimeout(() => {
+    // Enviar al grower
+    emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form).then(() => {
+      console.log("Email sent to grower");
+    }, err => {
+      console.error("Failed sending to grower", err);
+    });
 
-  // Enviar copia interna
-  emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form).then(() => {
-    alert("Form submitted successfully.");
-    form.reset();
-    growerPad1.clear();
-    growerPad2.clear();
-  }, err => {
-    alert("Error submitting form: " + err.text);
-  });
+    // Enviar copia interna
+    emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form).then(() => {
+      alert("Form submitted successfully.");
+      form.reset();
+      growerPad1.clear();
+      growerPad2.clear();
+    }, err => {
+      alert("Error submitting form: " + err.text);
+    });
+  }, 200); // pequeña pausa para que se actualicen los campos hidden
 });
 </script>
 </body>
