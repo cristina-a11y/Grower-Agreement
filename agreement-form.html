@@ -633,7 +633,7 @@ form.addEventListener("submit", function(e){
   document.getElementById("growerSig2Data").value = growerPad2.toDataURL();
 
   // Enviar copia al productor
-  emailjs.sendForm(SERVICE_ID, GROWER_TEMPLATE, this).then(() => {
+  emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, this).then(() => {
     console.log("Email sent to grower");
   }, err => {
     console.error("Failed sending to grower", err);
