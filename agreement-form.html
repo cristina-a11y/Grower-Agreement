@@ -651,26 +651,22 @@ const growerSig2Canvas = document.getElementById("growerSig2");
 const growerPad1 = new SignaturePad(growerSig1Canvas);
 const growerPad2 = new SignaturePad(growerSig2Canvas);
 
-// Función para ajustar el tamaño del canvas
+// Función para ajustar el tamaño del canvas de forma segura
 function resizeCanvas(canvas, pad) {
   const ratio = Math.max(window.devicePixelRatio || 1, 1);
   canvas.width = canvas.offsetWidth * ratio;
   canvas.height = canvas.offsetHeight * ratio;
-  canvas.getContext("2d").scale(ratio, ratio);
-  pad.clear(); // Borra la firma previa al redimensionar
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0); // Asegura coordenadas correctas
+  pad.clear(); // Limpia la firma (solo debe llamarse una vez al cargar)
 }
 
-// Ajustar al cargar
+// Ajustar tamaño solo una vez al cargar
 window.addEventListener("load", () => {
   resizeCanvas(growerSig1Canvas, growerPad1);
   resizeCanvas(growerSig2Canvas, growerPad2);
 });
-
-// Ajustar si se cambia tamaño ventana
-window.addEventListener("resize", () => {
-  resizeCanvas(growerSig1Canvas, growerPad1);
-  resizeCanvas(growerSig2Canvas, growerPad2);
-});
+  
   const form = document.getElementById("hazelnutForm");
 
 form.addEventListener("submit", function(e){
