@@ -122,8 +122,10 @@
     border-radius: 4px;
     font-family: inherit;
   }
-  #receivedAt {
-    margin-bottom: 20px;
+#receivedAt {
+  width: 100%;
+  margin-bottom: 30px;
+}
   }
   .inline {
     flex-wrap: wrap;
@@ -617,24 +619,26 @@
     const growerPad1 = new SignaturePad(document.getElementById("growerSig1"));
     const growerPad2 = new SignaturePad(document.getElementById("growerSig2"));
     const form = document.getElementById("hazelnutForm");
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      document.getElementById("growerSig1Data").value = growerPad1.isEmpty() ? "" : growerPad1.toDataURL();
-      document.getElementById("growerSig2Data").value = growerPad2.isEmpty() ? "" : growerPad2.toDataURL();
-      emailjs.sendForm(SERVICE_ID, GROWER_TEMPLATE, this).then(()=>{
-        console.log("Email sent to grower");
-      }, err => {
-        console.error("Failed sending to grower", err);
-      });
-      emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this).then(()=>{
-        alert("Formulario enviado con éxito.");
-        form.reset();
-        growerPad1.clear();
-        growerPad2.clear();
-      }, err => {
-        alert("Error al enviar formulario: " + err.text);
-      });
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("growerSig1Data").value = growerPad1.isEmpty() ? "" : growerPad1.toDataURL();
+  document.getElementById("growerSig2Data").value = growerPad2.isEmpty() ? "" : growerPad2.toDataURL();
+
+  // Enviar al productor primero
+  emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, this).then(() => {
+    console.log("Email sent to grower");
+
+    // Solo si el primero funciona, se manda el segundo
+    return emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, this);
+  }).then(() => {
+    alert("Formulario enviado con éxito.");
+    form.reset();
+    growerPad1.clear();
+    growerPad2.clear();
+  }).catch(err => {
+    alert("Error al enviar formulario: " + err.text);
   });
+});
 </script>
 </body>
 </html>
