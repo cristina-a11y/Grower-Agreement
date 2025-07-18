@@ -364,7 +364,7 @@
   </div>
 </div>
 
-<form action="mailto:cristina@willamettehazelnuts.com" method="post" enctype="text/plain">
+<form id="hazelnutForm" method="post">
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name <span class="required">*</span></label>
@@ -576,12 +576,29 @@
 
   </form>
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    const growerPad1 = new SignaturePad(document.getElementById('growerSig1'));
-    const growerPad2 = new SignaturePad(document.getElementById('growerSig2'));
-    document.querySelector('form').addEventListener('submit', function() {
-      document.getElementById('growerSig1Data').value = growerPad1.isEmpty() ? '' : growerPad1.toDataURL();
-      document.getElementById('growerSig2Data').value = growerPad2.isEmpty() ? '' : growerPad2.toDataURL();
+    emailjs.init("n9hL-Lm0sWOYQrYgi");
+    const growerPad1 = new SignaturePad(document.getElementById("growerSig1"));
+    const growerPad2 = new SignaturePad(document.getElementById("growerSig2"));
+    const form = document.getElementById("hazelnutForm");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      document.getElementById("growerSig1Data").value = growerPad1.isEmpty() ? "" : growerPad1.toDataURL();
+      document.getElementById("growerSig2Data").value = growerPad2.isEmpty() ? "" : growerPad2.toDataURL();
+      emailjs.sendForm("service_d3txw7k", "Hazelnut-Agreement", this).then(()=>{
+        console.log("Email sent to grower");
+      }, err => {
+        console.error("Failed sending to grower", err);
+      });
+      emailjs.sendForm("service_d3txw7k", "responses_template", this).then(()=>{
+        alert("Formulario enviado con éxito.");
+        form.reset();
+        growerPad1.clear();
+        growerPad2.clear();
+      }, err => {
+        alert("Error al enviar formulario: " + err.text);
+      });
     });
   </script>
 </body>
