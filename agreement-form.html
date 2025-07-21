@@ -678,7 +678,7 @@ form.addEventListener("submit", function(e){
     return;
   }
 
-// Convertir firmas a base64
+  // Convertir firmas a base64
   const sig1 = growerPad1.toDataURL();
   const sig2 = growerPad2.toDataURL();
   document.getElementById("growerSig1Data").value = sig1;
@@ -686,22 +686,72 @@ form.addEventListener("submit", function(e){
 
   // IMPORTANTE: Usa una pequeña pausa para asegurar que el DOM tenga los valores listos
   setTimeout(() => {
-    // Enviar al grower
-    emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form).then(() => {
-      console.log("Email sent to grower");
-    }, err => {
-      console.error("Failed sending to grower", err);
+    // 1. Obtener los datos del formulario como objeto plano
+    const formData = new FormData(form);
+    const plainData = Object.fromEntries(formData.entries());
+
+    // 2. Crear el contenido HTML para el PDF
+    const htmlContent = `
+      <h1>Hazelnut Grower Agreement</h1>
+      <p><strong>Grower:</strong> ${plainData.growerName}</p>
+      <p><strong>Address:</strong> ${plainData.address}, ${plainData.city}, ${plainData.state} ${plainData.zip}</p>
+      <p><strong>Phone:</strong> ${plainData.phone}</p>
+      <p><strong>Email:</strong> ${plainData.email}</p>
+      <p><strong>HGBA Member:</strong> ${plainData.hgba || "N/A"}</p>
+      <p><strong>Check Payable To:</strong> ${plainData.checkPayable || "Same as grower"}</p>
+      <p><strong>Received At:</strong> ${plainData.receivedAt}</p>
+    `;
+
+    // 3. Llamar a PDF.co para generar el PDF
+    fetch("https://api.pdf.co/v1/pdf/convert/html", {
+      method: "POST",
+      headers: {
+        "x-api-key": "cristina@willamettehazelnuts.com_BnD67GLhkw8jvHjUP3rWlH5qxIqXO7WyBfOEHb8PP7QUkak6jQnIkWS4gX5bidCO", // 🔁 Reemplaza por tu API Key real de PDF.co
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        html: htmlContent,
+        name: `Grower-Agreement-${plainData.growerName.replace(/\s+/g, "-")}.pdf`
+      })
+    })
+    .then(res => res.json())
+    .then(pdfResult => {
+      if (pdfResult.error) {
+        alert("Error generating PDF: " + pdfResult.message);
+        return;
+      }
+
+      const pdfUrl = pdfResult.url;
+
+      // 4. Agregar el link del PDF como campo oculto
+      const hiddenLinkInput = document.createElement("input");
+      hiddenLinkInput.type = "hidden";
+      hiddenLinkInput.name = "pdfUrl";
+      hiddenLinkInput.value = pdfUrl;
+      form.appendChild(hiddenLinkInput);
+
+      // 5. Enviar al grower
+      emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form).then(() => {
+        console.log("Email sent to grower");
+      }, err => {
+        console.error("Failed sending to grower", err);
+      });
+
+      // 6. Enviar copia interna al CEO
+      emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form).then(() => {
+        alert("Form submitted successfully.");
+        form.reset();
+        growerPad1.clear();
+        growerPad2.clear();
+      }, err => {
+        alert("Error submitting form: " + err.text);
+      });
+
+    })
+    .catch(err => {
+      alert("PDF generation failed: " + err.message);
     });
 
-    // Enviar copia interna
-    emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form).then(() => {
-      alert("Form submitted successfully.");
-      form.reset();
-      growerPad1.clear();
-      growerPad2.clear();
-    }, err => {
-      alert("Error submitting form: " + err.text);
-    });
   }, 200); // pequeña pausa para que se actualicen los campos hidden
 });
 </script>
