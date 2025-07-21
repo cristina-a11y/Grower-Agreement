@@ -696,60 +696,719 @@ form.addEventListener("submit", function(e){
   const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Hazelnut Grower Agreement</title>
-<style>
-  body { font-family: sans-serif; padding: 20px; }
-  h1 { text-align: center; }
-  .section { margin-bottom: 20px; }
-  .signature-img { max-width: 300px; border: 1px solid #333; margin-top: 20px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazelnut Grower Agreement - Willamette Hazelnut Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Libre Baskerville', serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .banner img {
+      width: 100%;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    .header-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .page-header .logo {
+      max-width: 180px;
+    }
+    .page-header h1 {
+      margin: 0;
+      text-align: center;
+      flex: 1;
+    }
+    .page-header .contact {
+      text-align: right;
+      color: #264d19; /* dark green */
+      line-height: 1.3;
+      font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      .page-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .page-header .contact {
+        text-align: center;
+        margin-top: 10px;
+      }
+        .form-columns,
+      .inline,
+      .signature-lines {
+        flex-direction: column;
+      }
+      .form-columns .col,
+      .inline > div,
+      .signature-lines div {
+        width: 100%;
+      }
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #4b2e2e;
+      line-height: 1;
+    }
+    .title .hazel {
+      font-size: 2em;
+      display: block;
+      margin-bottom: -2px;
+    }
+  .title .agreement {
+    font-size: 1.2em;
+    display: block;
+    letter-spacing: 0.1em;
+  }
+  .required {
+    color: red;
+  }
+  form {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #264d19;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+#receivedAt {
+  width: 100%;
+  margin-bottom: 30px;
+}
+  }
+  .inline {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+  }
+  .inline > div {
+    min-width: 100px;
+    flex: 1;
+  }
+  .full-line {
+    width: 100%;
+  }
+  .form-columns {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  .form-columns .col {
+    min-width: 250px;
+    flex: 1;
+  }
+  .small {
+    font-size: 0.8em;
+    font-style: italic;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left;
+  }
+  th {
+    background: #264d19;
+    color: #fff;
+  }
+  td input {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .radio-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .radio-group label {
+    margin-right: 10px;
+    font-weight: normal;
+  }
+  .radio-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .signature {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature div {
+    width: 45%;
+  }
+  .signature input {
+    width: 100%;
+  }
+  h2 {
+    margin-top: 30px;
+    color: #4b2e2e;
+  }
+  .note {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: -8px;
+    margin-bottom: 12px;
+  }
+.legal-text {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.4;
+    font-size: 0.85em;
+    background: #e6f5e6;
+    color: #4b2e2e;
+    text-align: justify;
+  }
+  .cash-section {
+    margin-top: 40px;
+    border-top: 2px solid #4b2e2e;
+    padding-top: 20px;
+  }
+  .cash-section h2 {
+    background: #87461f;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .split-section {
+    margin-top: 40px;
+  }
+  .split-section h2 {
+    background: #87461f;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .split-info {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+  .split-block-title {
+    background: rgba(38,77,25,0.2);
+    color: #4b2e2e;
+    padding: 8px;
+    margin: 12px 0;
+    text-transform: uppercase;
+  }
+  .split-block {
+    margin-bottom: 20px;
+  }
+  .add-section {
+    margin-top: 40px;
+    border-top: 2px solid #4b2e2e;
+    padding-top: 20px;
+  }
+  .add-section h2 {
+    background: #87461f;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .add-section h2 .optional {
+    font-size: 0.8em;
+    font-style: italic;
+    text-transform: none;
+  }
+  .signature-lines {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature-lines div {
+    width: 45%;
+    text-align: center;
+  }
+.signature-container {
+    text-align: center;
+  }
+.signature-pad {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #333;
+    border-radius: 4px;
+  }
+.clear-btn {
+    margin-top: 4px;
+    font-size: 0.8em;
+  }
+.signature-input {
+    width: 100%;
+    border: 1px solid #333;
+    padding: 10px;
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .signature-input[disabled] {
+    background: #eee;
+    color: #666;
+  }
+  .signature-caption {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9em;
+  }
+  .signature-note {
+    font-size: 0.8em;
+    display: block;
+    margin-top: 2px;
+  }
+  .signature-lines.single {
+    justify-content: center;
+  }
+  .signature-lines.single div {
+    width: 60%;
+  }
+
+  .submit-btn {
+    background: #32CD32;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: block;
+    margin: 30px auto;
+  }
 </style>
-</head>
-<body>
-  <h1>Hazelnut Grower Agreement</h1>
+  </head>
+  <body>
+  <div class="header-container">
+  <div class="banner">
+    <img src="Hazelnut-inshell.png" alt="Hazelnuts decorative">
+  </div>
+  <div class="page-header">
+    <img src="willamette_hazelnut_logo.png" alt="Willamette Hazelnut logo" class="logo">
+    <h1 class="title">
+      <span class="hazel" style="color: #964B00;">HAZELNUT</span><br>
+      <span class="agreement" style="color: #006400;">GROWER AGREEMENT</span>
+    </h1>
+    <div class="contact">
+      <strong>Mailing Address:</strong><br>
+      14975 NE Tangen Rd<br>
+      Newberg, Oregon, 97132<br>
+      TEL (503) 538 9256<br>
+      <strong>www.whazelnut.com</strong>
+    </div>
+  </div>
+</div>
 
-  <div class="section">
-    <strong>Grower Name:</strong> ${plainData.growerName}<br/>
-    <strong>Contact Name:</strong> ${plainData.contactName}<br/>
-    <strong>Address:</strong> ${plainData.address}, ${plainData.city}, ${plainData.state}, ${plainData.zip}<br/>
-    <strong>Phone:</strong> ${plainData.phone}<br/>
-    <strong>Email:</strong> ${plainData.email}<br/>
-    <strong>Crop Year:</strong> ${plainData.cropYear}<br/>
-    <strong>Date:</strong> ${plainData.date}<br/>
-    <strong>HGBA Member:</strong> ${plainData.hgba}<br/>
+<form id="hazelnutForm" method="post">
+  <div class="form-columns">
+    <div class="col">
+      <label for="growerName">Grower Name <span class="required">*</span></label>
+<input id="growerName" type="text" name="growerName" autocomplete="name" required value="${growerName}">
+
+      <label for="contactName">Contact Name <span class="small">(if needed)</span></label>
+<input id="contactName" type="text" name="contactName" autocomplete="additional-name" value="${contactName}">
+
+      <label for="address">Mailing Address <span class="required">*</span></label>
+<input id="address" type="text" name="address" autocomplete="street-address" required value="${address}">
+
+  </div>
+  <div class="col">
+      <label for="cropYear">Crop Year <span class="required">*</span></label>
+      <input id="cropYear" type="text" name="cropYear" required value="${cropYear}">
+
+      <label for="date">Date</label>
+      <input id="date" type="date" name="date" value="${date}">
+    <script>
+  const dateInput = document.getElementById("date");
+  if (dateInput) {
+    const today = new Date();
+    dateInput.value = today.toISOString().split("T")[0];
+  }
+</script>
+
+      <label for="phone">Phone <span class="required">*</span></label>
+<input id="phone" type="tel" name="phone" autocomplete="tel" required value="${phone}">
+
+  </div>
   </div>
 
-  <div class="section">
-    <strong>Cash Advance Program:</strong> ${plainData.cashAdvance}<br/>
-    <strong>Check Payable To:</strong> ${plainData.checkPayable}<br/>
-    <strong>Hazelnuts Received At:</strong> ${plainData.receivedAt}<br/>
+  <div class="inline full-line">
+    <div>
+      <label for="city">City <span class="required">*</span></label>
+<input id="city" type="text" name="city" autocomplete="address-level2" required value="${city}">
+    </div>
+    <div>
+      <label for="state">State <span class="required">*</span></label>
+<input id="state" type="text" name="state" autocomplete="address-level1" required value="${state}">
+    </div>
+    <div>
+      <label for="zip">Zip <span class="required">*</span></label>
+<input id="zip" type="text" name="zip" autocomplete="postal-code" required value="${zip}">
+    </div>
   </div>
 
-  <div class="section">
-    <strong>Signature 1:</strong><br/>
-    <img src="${plainData.growerSig1Data}" class="signature-img" />
+  <div class="inline full-line">
+    <div>
+      <label for="email">Email Address <span class="required">*</span></label>
+<input id="email" type="email" name="email" autocomplete="email" required value="${email}">
+    </div>
+    <div class="radio-group">
+      <span class="radio-label">HGBA Member</span>
+      <label><input type="radio" name="hgba" value="yes" value="${hgba}"> Yes</label>
+      <label><input type="radio" name="hgba" value="no" value="${hgba}"> No</label>
+    </div>
   </div>
 
-  <div class="section">
-    <strong>Signature 2:</strong><br/>
-    <img src="${plainData.growerSig2Data}" class="signature-img" />
+  <table>
+<thead>
+  <tr>
+    <th>Orchard Name</th>
+    <th>Acreage</th>
+    <th>Variety</th>
+    <th>Planting Year</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="orchard1" placeholder="Orchard" required value="${orchard1}">
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="acreage1" placeholder="Acreage" required value="${acreage1}">
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="variety1" placeholder="Variety" required value="${variety1}">
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+  <td>
+    <div style="position: relative;">
+      <input type="text" name="year1" placeholder="Year" required value="${year1}">
+      <span class="required" style="position: absolute; top: 0; right: 8px;">*</span>
+    </div>
+  </td>
+</tr>
+  <tr>
+    <td><input type="text" name="orchard2" placeholder="Orchard-2" value="${orchard2}"></td>
+    <td><input type="text" name="acreage2" placeholder="Acre-2" value="${acreage2}"></td>
+    <td><input type="text" name="variety2" placeholder="Variety-2" value="${variety2}"></td>
+    <td><input type="text" name="year2" placeholder="Year-2" value="${year2}"></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="orchard3" placeholder="Orchard-3" value="${orchard3}"></td>
+    <td><input type="text" name="acreage3" placeholder="Acre-3" value="${acreage3}"></td>
+    <td><input type="text" name="variety3" placeholder="Variety-3" value="${variety3}"></td>
+    <td><input type="text" name="year3" placeholder="Year-3" value="${year3}"></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="orchard4" placeholder="Orchard-4" value="${orchard4}"></td>
+    <td><input type="text" name="acreage4" placeholder="Acre-4" value="${acreage4}"></td>
+    <td><input type="text" name="variety4" placeholder="Variety-4" value="${variety4}"></td>
+    <td><input type="text" name="year4" placeholder="Year-4" value="${year4}"></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="orchard5" placeholder="Orchard-5" value="${orchard5}"></td>
+    <td><input type="text" name="acreage5" placeholder="Acre-5" value="${acreage5}"></td>
+    <td><input type="text" name="variety5" placeholder="Variety-5" value="${variety5}"></td>
+    <td><input type="text" name="year5" placeholder="Year-5" value="${year5}"></td>
+  </tr>
+</tbody>
+  </table>
+
+  <div class="radio-group">
+    <span class="radio-label">Do Any of Your Orchards Require an Orchard Payment Split?</span>
+    <label><input type="radio" name="paymentSplit" value="yes" value="${paymentSplit}"> Yes</label>
+    <label><input type="radio" name="paymentSplit" value="no" value="${paymentSplit}"> No</label>
   </div>
 
-</body>
-</html>`;
+  <label for="payable"> Check payable to: (if different than Grower Name) </label>
+  <input id="payable" type="text" name="checkPayable" value="${checkPayable}">
+  <p class="note">Minimum price paid and payment date will be per Willamette Hazelnut Inc. Company&rsquo;s published policy.</p>
+<label for="receivedAt">Hazelnuts Received At</label>
+  <select id="receivedAt" name="receivedAt" data-template-field="${receivedAt}">
+    <option value="">-- Please select an option --</option>
+    <option value="Blue Heron Farm - Monmouth">Blue Heron Farm - Monmouth</option>
+    <option value="Christensen Farms - McMinnville">Christensen Farms - McMinnville</option>
+    <option value="Ernst Nursery - St. Paul">Ernst Nursery - St. Paul</option>
+    <option value="Four Ridge Orchards - Hillsboro">Four Ridge Orchards - Hillsboro</option>
+    <option value="K&amp;D Receiving - Albany">K&amp;D Receiving - Albany</option>
+    <option value="RK Farms - Aurora">RK Farms - Aurora</option>
+    <option value="Rumpca Farms - Canby">Rumpca Farms - Canby</option>
+    <option value="Willamette Hazelnut - Newberg">Willamette Hazelnut - Newberg</option>
+  </select>
 
-  // Llamar a PDF.co
-  fetch("https://api.pdf.co/v1/pdf/convert/html", {
-    method: "POST",
-    headers: {
-      "x-api-key": "BnD67GLhkw8jvHjUP3rWlH5qxIqXO7WyBfOEHb8PP7QUkak6jQnIkWS4gX5bidCO",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      html: htmlContent,
-      name: `Grower-Agreement-${plainData.growerName.replace(/\s+/g, "-")}.pdf`
+  <div class="legal-text">
+    <p>Willamette Hazelnut, Inc. (hereafter referred to as Buyer) agrees to buy from Grower and Grower agrees to sell to Buyer the Hazelnut crop (from the described above properties) for the duration hereof. Payment will be made in accordance to the most recent version of the Hazelnut Growers Bargaining Association and Member-Growers&rsquo; Contract with Buyer. Grower assumes all risks of loss, damage, or deterioration of any Hazelnuts occurring prior to final acceptance thereof by Buyer. Grower warrants that Grower is the sole owner of the above described hazelnut crop free of encumbrances; that Grower has not previously contracted to sell or deliver any of said hazelnuts to any other person, that Grower shall not during the durations of this contract either encumber or contract for delivery to any other person the production above described; and that Grower shall deliver said Hazelnuts to Buyer free of all encumbrances. Grower warrants and represents that chemicals and fertilizer applied to acreage contracted herein, have been registered for use on Hazelnuts, and that Good Agricultural Practices (GAP) will be followed in all phases of production and harvesting of Hazelnuts delivered to Buyer. Buyer will refuse to accept delivery of any Lot known to have been treated with chemicals or fertilizer not registered for use on hazelnuts or otherwise not produced and harvested in accordance with GAP. If Grower elects not to participate in Buyer&rsquo;s Cash Advance Payment Program, it is agreed that in the event Grower is unable to deliver said Hazelnuts to Buyer, on account of destruction by floods, weather conditions, or any unavoidable casualties, or in the event that Buyer shall be unable to process, handle, or ship said Hazelnuts on account of quarantine or other governmental restrictions, railroad or labor strikes, fire or other unavoidable casualties, or inability to get supplies on account of such restrictions, strikes, fires, or unavoidable casualties, then this contract shall be null and void upon written notice by either party to the other party or such inability to perform and the reason therefore.</p>
+  </div>
+
+  <div class="signature-lines">
+<div>
+  <img src="signature.png" alt="Firma de Willamette Hazelnut Inc." style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+  <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
+</div>
+      <div class="signature-container">
+        <canvas id="growerSig1" class="signature-pad"></canvas>
+        <button type="button" class="clear-btn" onclick="growerPad1.clear()">Clear</button>
+        <input type="hidden" name="growerSig1Data" id="growerSig1Data" value="${growerSig1Data}">
+        <span class="signature-caption">Grower's Signature</span>
+      </div>
+  </div>
+
+  <div class="cash-section">
+    <h2>CASH ADVANCE PROGRAM</h2>
+    <div class="legal-text">
+      <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
+    </div>
+    <div class="radio-group">
+      <span class="radio-label">Will You Participate in the Cash Advance Program?</span>
+      <label><input type="radio" name="cashAdvance" value="yes" value="${cashAdvance}"> Yes</label>
+      <label><input type="radio" name="cashAdvance" value="no" value="${cashAdvance}"> No</label>
+    </div>
+  <div class="signature-lines single">
+      <div class="signature-container">
+        <canvas id="growerSig2" class="signature-pad"></canvas>
+        <input type="hidden" name="growerSig2Data" id="growerSig2Data" value="${growerSig2Data}">
+        <button type="button" class="clear-btn" onclick="growerPad2.clear()">Clear</button>
+        <span class="signature-caption">Grower's Signature</span>
+      </div>
+  </div>
+  </div>
+
+
+  <div class="add-section">
+    <h2>ADDITIONAL ORCHARDS <span class="optional">(if needed)</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Orchard Name</th>
+          <th>Acreage</th>
+          <th>Variety</th>
+          <th>Planting Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><input type="text" name="addorchard1" value="${addorchard1}"></td><td><input type="text" name="addacreage1" value="${addacreage1}"></td><td><input type="text" name="addvariety1" value="${addvariety1}"></td><td><input type="text" name="addyear1" value="${addyear1}"></td></tr>
+        <tr><td><input type="text" name="addorchard2" value="${addorchard2}"></td><td><input type="text" name="addacreage2" value="${addacreage2}"></td><td><input type="text" name="addvariety2" value="${addvariety2}"></td><td><input type="text" name="addyear2" value="${addyear2}"></td></tr>
+        <tr><td><input type="text" name="addorchard3" value="${addorchard3}"></td><td><input type="text" name="addacreage3" value="${addacreage3}"></td><td><input type="text" name="addvariety3" value="${addvariety3}"></td><td><input type="text" name="addyear3" value="${addyear3}"></td></tr>
+        <tr><td><input type="text" name="addorchard4" value="${addorchard4}"></td><td><input type="text" name="addacreage4" value="${addacreage4}"></td><td><input type="text" name="addvariety4" value="${addvariety4}"></td><td><input type="text" name="addyear4" value="${addyear4}"></td></tr>
+        <tr><td><input type="text" name="addorchard5" value="${addorchard5}"></td><td><input type="text" name="addacreage5" value="${addacreage5}"></td><td><input type="text" name="addvariety5" value="${addvariety5}"></td><td><input type="text" name="addyear5" value="${addyear5}"></td></tr>
+        <tr><td><input type="text" name="addorchard6" value="${addorchard6}"></td><td><input type="text" name="addacreage6" value="${addacreage6}"></td><td><input type="text" name="addvariety6" value="${addvariety6}"></td><td><input type="text" name="addyear6" value="${addyear6}"></td></tr>
+        <tr><td><input type="text" name="addorchard7" value="${addorchard7}"></td><td><input type="text" name="addacreage7" value="${addacreage7}"></td><td><input type="text" name="addvariety7" value="${addvariety7}"></td><td><input type="text" name="addyear7" value="${addyear7}"></td></tr>
+        <tr><td><input type="text" name="addorchard8" value="${addorchard8}"></td><td><input type="text" name="addacreage8" value="${addacreage8}"></td><td><input type="text" name="addvariety8" value="${addvariety8}"></td><td><input type="text" name="addyear8" value="${addyear8}"></td></tr>
+        <tr><td><input type="text" name="addorchard9" value="${addorchard9}"></td><td><input type="text" name="addacreage9" value="${addacreage9}"></td><td><input type="text" name="addvariety9" value="${addvariety9}"></td><td><input type="text" name="addyear9" value="${addyear9}"></td></tr>
+        <tr><td><input type="text" name="addorchard10" value="${addorchard10}"></td><td><input type="text" name="addacreage10" value="${addacreage10}"></td><td><input type="text" name="addvariety10" value="${addvariety10}"></td><td><input type="text" name="addyear10" value="${addyear10}"></td></tr>
+        <tr><td><input type="text" name="addorchard11" value="${addorchard11}"></td><td><input type="text" name="addacreage11" value="${addacreage11}"></td><td><input type="text" name="addvariety11" value="${addvariety11}"></td><td><input type="text" name="addyear11" value="${addyear11}"></td></tr>
+        <tr><td><input type="text" name="addorchard12" value="${addorchard12}"></td><td><input type="text" name="addacreage12" value="${addacreage12}"></td><td><input type="text" name="addvariety12" value="${addvariety12}"></td><td><input type="text" name="addyear12" value="${addyear12}"></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="split-section">
+      <h2>ORCHARD SPLIT INFORMATION</h2>
+      <p class="split-info">By completing this section, I understand that my orchards recorded below will be split with a third-party based on the percentage I assign. The third-party indicated will be paid directly by Willamette Hazelnut Inc. in accordance with the Company&rsquo;s published policy.</p>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #1</div>
+        <label for="split1Orchard">Orchard Name</label>
+        <input id="split1Orchard" type="text" name="split1Orchard" value="${split1Orchard}">
+        <label for="split1Third">Third-Party Grower Name</label>
+        <input id="split1Third" type="text" name="split1Third" value="${split1Third}">
+        <label for="split1Percent">% To Be Paid to Third-Party</label>
+        <input id="split1Percent" type="text" name="split1Percent" value="${split1Percent}">
+        <label for="split1Address">Third-Party Mailing Address</label>
+        <input id="split1Address" type="text" name="split1Address" value="${split1Address}">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #2</div>
+        <label for="split2Orchard">Orchard Name</label>
+        <input id="split2Orchard" type="text" name="split2Orchard" value="${split2Orchard}">
+        <label for="split2Third">Third-Party Grower Name</label>
+        <input id="split2Third" type="text" name="split2Third" value="${split2Third}">
+        <label for="split2Percent">% To Be Paid to Third-Party</label>
+        <input id="split2Percent" type="text" name="split2Percent" value="${split2Percent}">
+        <label for="split2Address">Third-Party Mailing Address</label>
+        <input id="split2Address" type="text" name="split2Address" value="${split2Address}">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #3</div>
+        <label for="split3Orchard">Orchard Name</label>
+        <input id="split3Orchard" type="text" name="split3Orchard" value="${split3Orchard}">
+        <label for="split3Third">Third-Party Grower Name</label>
+        <input id="split3Third" type="text" name="split3Third" value="${split3Third}">
+        <label for="split3Percent">% To Be Paid to Third-Party</label>
+        <input id="split3Percent" type="text" name="split3Percent" value="${split3Percent}">
+        <label for="split3Address">Third-Party Mailing Address</label>
+        <input id="split3Address" type="text" name="split3Address" value="${split3Address}">
+      </div>
+
+      <div class="split-block">
+        <div class="split-block-title">SPLIT #4</div>
+        <label for="split4Orchard">Orchard Name</label>
+        <input id="split4Orchard" type="text" name="split4Orchard" value="${split4Orchard}">
+        <label for="split4Third">Third-Party Grower Name</label>
+        <input id="split4Third" type="text" name="split4Third" value="${split4Third}">
+        <label for="split4Percent">% To Be Paid to Third-Party</label>
+        <input id="split4Percent" type="text" name="split4Percent" value="${split4Percent}">
+        <label for="split4Address">Third-Party Mailing Address</label>
+        <input id="split4Address" type="text" name="split4Address" value="${split4Address}">
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  // Inicializar EmailJS
+  emailjs.init("n9hL-Lm0sWOYQrYgi");
+
+  const SERVICE_ID = "service_d3txw7k";
+  const HAZELNUT_AGREEMENT = "template_8d7vx5l";
+  const RESPONSES_TEMPLATE = "template_14975";
+
+const growerSig1Canvas = document.getElementById("growerSig1");
+const growerSig2Canvas = document.getElementById("growerSig2");
+
+const growerPad1 = new SignaturePad(growerSig1Canvas);
+const growerPad2 = new SignaturePad(growerSig2Canvas);
+
+// Función para ajustar el tamaño del canvas de forma segura
+function resizeCanvas(canvas, pad) {
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0); // Asegura coordenadas correctas
+  pad.clear(); // Limpia la firma (solo debe llamarse una vez al cargar)
+}
+
+// Ajustar tamaño solo una vez al cargar
+window.addEventListener("load", () => {
+  resizeCanvas(growerSig1Canvas, growerPad1);
+  resizeCanvas(growerSig2Canvas, growerPad2);
+});
+  
+  const form = document.getElementById("hazelnutForm");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  // Validar que ambas firmas estén completas
+  if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
+    alert("Please make sure both signature sections are completed before submitting the form.");
+    return;
+  }
+
+  // Convertir firmas a base64
+  const sig1 = growerPad1.toDataURL();
+  const sig2 = growerPad2.toDataURL();
+  document.getElementById("growerSig1Data").value = sig1;
+  document.getElementById("growerSig2Data").value = sig2;
+
+  // IMPORTANTE: Usa una pequeña pausa para asegurar que el DOM tenga los valores listos
+  setTimeout(() => {
+    // 1. Obtener los datos del formulario como objeto plano
+    const formData = new FormData(form);
+    const plainData = Object.fromEntries(formData.entries());
+
+    // 2. Crear el contenido HTML para el PDF
+    const htmlContent = `
+      <h1>Hazelnut Grower Agreement</h1>
+      <p><strong>Grower:</strong> ${plainData.growerName}</p>
+      <p><strong>Address:</strong> ${plainData.address}, ${plainData.city}, ${plainData.state} ${plainData.zip}</p>
+      <p><strong>Phone:</strong> ${plainData.phone}</p>
+      <p><strong>Email:</strong> ${plainData.email}</p>
+      <p><strong>HGBA Member:</strong> ${plainData.hgba || "N/A"}</p>
+      <p><strong>Check Payable To:</strong> ${plainData.checkPayable || "Same as grower"}</p>
+      <p><strong>Received At:</strong> ${plainData.receivedAt}</p>
+    `;
+
+    // 3. Llamar a PDF.co para generar el PDF
+    fetch("https://api.pdf.co/v1/pdf/convert/html", {
+      method: "POST",
+      headers: {
+       "x-api-key": "BnD67GLhkw8jvHjUP3rWlH5qxIqXO7WyBfOEHb8PP7QUkak6jQnIkWS4gX5bidCO", // 🔁 Reemplaza por tu API Key real de PDF.co
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        html: htmlContent,
+        name: `Grower-Agreement-${plainData.growerName.replace(/\s+/g, "-")}.pdf`
+      })
     })
-  })
     .then(res => res.json())
     .then(pdfResult => {
       if (pdfResult.error) {
@@ -759,21 +1418,21 @@ form.addEventListener("submit", function(e){
 
       const pdfUrl = pdfResult.url;
 
-      // Agregar el link del PDF como campo oculto
+      // 4. Agregar el link del PDF como campo oculto
       const hiddenLinkInput = document.createElement("input");
       hiddenLinkInput.type = "hidden";
       hiddenLinkInput.name = "pdfUrl";
       hiddenLinkInput.value = pdfUrl;
       form.appendChild(hiddenLinkInput);
 
-      // Enviar al grower
+      // 5. Enviar al grower
       emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form).then(() => {
         console.log("Email sent to grower");
       }, err => {
         console.error("Failed sending to grower", err);
       });
 
-      // Enviar copia interna al CEO
+      // 6. Enviar copia interna al CEO
       emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form).then(() => {
         alert("Form submitted successfully.");
         form.reset();
@@ -788,7 +1447,7 @@ form.addEventListener("submit", function(e){
       alert("PDF generation failed: " + err.message);
     });
 
-}, 200); // pequeña pausa para que se actualicen los campos hidden
+  }, 200); // pequeña pausa para que se actualicen los campos hidden
 });
 </script>
 </body>
