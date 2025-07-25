@@ -541,9 +541,11 @@
       <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
       <label><input type="radio" name="cashAdvance" value="no"> No</label>
     </div>
-  <label for="acreage"> Number of acres for cash advance: </label>
-  <input id="acreage" type="text" name="acreageCash">
-  <p class="note"> Must be equal to or less than acreage committed on this agreement </p>
+ <div class="form-field">
+  <label for="acreage">Number of Acres for Cash Advance:</label>
+  <input id="acreage" type="number" name="acreageCash" min="0" step="1" placeholder="Enter number of acres">
+  <p class="note">Must be equal to or less than acreage committed on this agreement</p>
+</div>
   <div class="signature-lines single">
       <div class="signature-container">
         <canvas id="growerSig2" class="signature-pad"></canvas>
