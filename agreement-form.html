@@ -379,7 +379,14 @@
 <input id="contactName" type="text" name="contactName" autocomplete="additional-name">
 
       <label for="address">Mailing Address <span class="required">*</span></label>
-<input id="address" type="text" name="address" autocomplete="street-address" required>
+      <input id="address" type="text" name="address" autocomplete="street-address" required>
+
+      <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
+      <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
+      <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700).</p>
+
+      <label for="checkMailingAddress">Mailing Address <span class="small">(What is the correct address to send checks to?)</span></label>
+      <input id="checkMailingAddress" type="text" name="checkMailingAddress" placeholder="Enter billing or mailing address">
 
   </div>
   <div class="col">
