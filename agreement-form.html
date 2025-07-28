@@ -383,7 +383,8 @@
 
       <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
       <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
-      <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700).</p>
+      <button type="button" id="mapButton">Open Google Maps</button>
+      <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700). You can <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">use Google Maps</a> to look them up.</p>
 
       <label for="checkMailingAddress">Mailing Address <span class="small">(What is the correct address to send checks to?)</span></label>
       <input id="checkMailingAddress" type="text" name="checkMailingAddress" placeholder="Enter billing or mailing address">
@@ -400,6 +401,12 @@
   if (dateInput) {
     const today = new Date();
     dateInput.value = today.toISOString().split("T")[0];
+  }
+  const mapButton = document.getElementById("mapButton");
+  if (mapButton) {
+    mapButton.addEventListener("click", () => {
+      window.open("https://www.google.com/maps", "_blank");
+    });
   }
 </script>
 
