@@ -373,16 +373,21 @@
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name <span class="required">*</span></label>
-<input id="growerName" type="text" name="growerName" autocomplete="name" required>
+      <input id="growerName" type="text" name="growerName" autocomplete="name" required>
 
       <label for="contactName">Contact Name <span class="small">(if needed)</span></label>
-<input id="contactName" type="text" name="contactName" autocomplete="additional-name">
+      <input id="contactName" type="text" name="contactName" autocomplete="additional-name">
+
+      <div class="radio-group">
+        <span class="radio-label">HGBA Member</span>
+        <label><input type="radio" name="hgba" value="yes"> Yes</label>
+        <label><input type="radio" name="hgba" value="no"> No</label>
+      </div>
 
       <label for="address">Mailing Address <span class="required">*</span></label>
       <input id="address" type="text" name="address" autocomplete="street-address" required>
 
-
-  </div>
+    </div>
   <div class="col">
       <label for="cropYear">Crop Year <span class="required">*</span></label>
       <input id="cropYear" type="text" name="cropYear" required>
@@ -404,8 +409,8 @@
   </div>
 
   <div class="full-line">
-    <label for="checkMailingAddress">Mailing Address <span class="small">(What is the correct address to send checks to?)</span></label>
-    <input id="checkMailingAddress" type="text" name="checkMailingAddress" placeholder="Enter billing or mailing address">
+    <label for="checkMailingAddress">Mailing Address <span class="required">*</span> <span class="small">(What is the correct address to send checks to?)</span></label>
+    <input id="checkMailingAddress" type="text" name="checkMailingAddress" placeholder="Enter billing or mailing address" required>
   </div>
 
   <script>
@@ -417,7 +422,9 @@
   const mapButton = document.getElementById("mapButton");
   if (mapButton) {
     mapButton.addEventListener("click", () => {
-      window.open("https://www.google.com/maps", "_blank");
+      const loc = document.getElementById("orchardLocation").value;
+      const url = "https://www.google.com/maps/search/" + encodeURIComponent(loc);
+      window.open(url, "_blank");
     });
   }
   </script>
@@ -440,12 +447,7 @@
   <div class="inline full-line">
     <div>
       <label for="email">Email Address <span class="required">*</span></label>
-<input id="email" type="email" name="email" autocomplete="email" required>
-    </div>
-    <div class="radio-group">
-      <span class="radio-label">HGBA Member</span>
-      <label><input type="radio" name="hgba" value="yes"> Yes</label>
-      <label><input type="radio" name="hgba" value="no"> No</label>
+      <input id="email" type="email" name="email" autocomplete="email" required>
     </div>
   </div>
 
