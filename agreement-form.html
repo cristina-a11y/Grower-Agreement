@@ -378,16 +378,32 @@
       <label for="contactName">Contact Name <span class="small">(if needed)</span></label>
 <input id="contactName" type="text" name="contactName" autocomplete="additional-name" placeholder="Enter billing or mailing address">>
     </div>
-  <div class="inline full-line">
-  </div>
-      <label for="address">Mailing Address <span class="required">*>(What is the correct address to send checks to?)</span></label>
-      <input id="address" type="text" name="address" autocomplete="street-address" required>
 
-     <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
-      <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
-      <button type="button" id="mapButton">Open Google Maps</button>
-      <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700). You can <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">use Google Maps</a> to look them up.</p>
-    </div>
+  <div class="full-line">
+    <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
+    <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
+    <button type="button" id="mapButton">Open Google Maps</button>
+    <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700). You can <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">use Google Maps</a> to look them up.</p>
+  </div>
+
+  <div class="full-line">
+      <label for="address">Mailing Address <span class="required"><*><(What is the correct address to send checks to?)</span></label>
+      <input id="address" type="text" name="address" autocomplete="street-address" required placeholder="Enter billing or mailing address">>
+  </div>
+
+  <script>
+  const dateInput = document.getElementById("date");
+  if (dateInput) {
+    const today = new Date();
+    dateInput.value = today.toISOString().split("T")[0];
+  }
+  const mapButton = document.getElementById("mapButton");
+  if (mapButton) {
+    mapButton.addEventListener("click", () => {
+      window.open("https://www.google.com/maps", "_blank");
+    });
+  }
+  </script>
 
   </div>
   <div class="col">
