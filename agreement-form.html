@@ -383,7 +383,7 @@
         <label><input type="radio" name="hgba" value="yes"> Yes</label>
         <label><input type="radio" name="hgba" value="no"> No</label>
       </div>
-    </div>
+      
   <div class="col">
       <label for="cropYear">Crop Year <span class="required">*</span></label>
       <input id="cropYear" type="text" name="cropYear" required>
@@ -401,19 +401,21 @@
 </script>
      <label for="phone">Phone <span class="required">*</span></label>
 <input id="phone" type="tel" name="phone" autocomplete="tel" required>
-
-  </div>
-  </div>
-
-      <label for="address">Mailing Address <span class="required"><*><(What is the correct address to send checks to?)</span></label>
-      <input id="address" type="text" name="address" autocomplete="street-address" required placeholder="Enter billing or mailing address">>
-     <div class="inline full-line">
     </div>
-    
+  </div>
+  
+ <div class="full-line">
+    <label for="checkMailingAddress">Mailing Address <span class="required">*</span> <span class="small">(What is the correct address to send checks to?)</span></label>
+    <input id="checkMailingAddress" type="text" name="checkMailingAddress" placeholder="Enter billing or mailing address" required>
+  </div>
+
+
+
+  <div class="inline full-line">
+    <div>
       <label for="city">City <span class="required">*</span></label>
 <input id="city" type="text" name="city" autocomplete="address-level2" required>
     </div>
-  
     <div>
       <label for="state">State <span class="required">*</span></label>
 <input id="state" type="text" name="state" autocomplete="address-level1" required>
@@ -423,8 +425,14 @@
 <input id="zip" type="text" name="zip" autocomplete="postal-code" required>
     </div>
   </div>
-    </div>
 
+  <div class="inline full-line">
+    <div>
+      <label for="email">Email Address <span class="required">*</span></label>
+      <input id="email" type="email" name="email" autocomplete="email" required>
+    </div>
+  </div>
+    
     <div class="full-line">
     <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
     <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
