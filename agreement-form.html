@@ -383,8 +383,27 @@
         <label><input type="radio" name="hgba" value="yes"> Yes</label>
         <label><input type="radio" name="hgba" value="no"> No</label>
       </div>
-      
-    <div class="inline full-line">
+        <div class="col">
+      <label for="cropYear">Crop Year <span class="required">*</span></label>
+      <input id="cropYear" type="text" name="cropYear" required>
+
+      <label for="date">Date</label>
+      <input id="date" type="date" name="date">
+      <label for="phone">Phone <span class="required">*</span></label>
+<input id="phone" type="tel" name="phone" autocomplete="tel" required>
+  </div>
+  </div>
+
+  <div class="full-line">
+    <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
+    <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
+    <button type="button" id="mapButton">Open Google Maps</button>
+    <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700). You can <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">use Google Maps</a> to look them up.</p>
+  </div>
+
+      <label for="address">Mailing Address <span class="required"><*><(What is the correct address to send checks to?)</span></label>
+      <input id="address" type="text" name="address" autocomplete="street-address" required placeholder="Enter billing or mailing address">>
+     <div class="inline full-line">
     <div>
       <label for="city">City <span class="required">*</span></label>
 <input id="city" type="text" name="city" autocomplete="address-level2" required>
@@ -398,28 +417,7 @@
 <input id="zip" type="text" name="zip" autocomplete="postal-code" required>
     </div>
   </div>
-
-  <div class="full-line">
-    <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
-    <input id="orchardLocation" type="text" name="orchardLocation" placeholder="Enter physical address or GPS coordinates if no address is available">
-    <button type="button" id="mapButton">Open Google Maps</button>
-    <p class="note">If the orchard has no physical address, please enter the GPS coordinates (e.g., 45.3000, -122.9700). You can <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">use Google Maps</a> to look them up.</p>
-  </div>
-
-      <label for="address">Mailing Address <span class="required"><*><(What is the correct address to send checks to?)</span></label>
-      <input id="address" type="text" name="address" autocomplete="street-address" required placeholder="Enter billing or mailing address">>
- 
     </div>
-      <div class="col">
-      <label for="cropYear">Crop Year <span class="required">*</span></label>
-      <input id="cropYear" type="text" name="cropYear" required>
-
-      <label for="date">Date</label>
-      <input id="date" type="date" name="date">
-      <label for="phone">Phone <span class="required">*</span></label>
-<input id="phone" type="tel" name="phone" autocomplete="tel" required>
-  </div>
-  </div>
 
     <div class="full-line">
     <label for="orchardLocation">Orchard Location <span class="small">(What is the location of your hazelnut orchard(s)?)</span></label>
