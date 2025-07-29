@@ -697,6 +697,7 @@ You can use your current location or search for it on <a href="https://www.googl
 </form>
     
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+<!-- EmailJS SDK -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
   (function(){
@@ -706,118 +707,107 @@ You can use your current location or search for it on <a href="https://www.googl
   })();
 </script>
 
+<!-- Tu código principal -->
+<script>
   const SERVICE_ID = "service_d3txw7k";
   const HAZELNUT_AGREEMENT = "template_8d7vx5l";
   const RESPONSES_TEMPLATE = "template_14975";
 
-const growerSig1Canvas = document.getElementById("growerSig1");
-const growerSig2Canvas = document.getElementById("growerSig2");
+  const growerSig1Canvas = document.getElementById("growerSig1");
+  const growerSig2Canvas = document.getElementById("growerSig2");
 
-const growerPad1 = new SignaturePad(growerSig1Canvas);
-const growerPad2 = new SignaturePad(growerSig2Canvas);
+  const growerPad1 = new SignaturePad(growerSig1Canvas);
+  const growerPad2 = new SignaturePad(growerSig2Canvas);
 
-// Función para ajustar el tamaño del canvas de forma segura
-function resizeCanvas(canvas, pad) {
-  const ratio = Math.max(window.devicePixelRatio || 1, 1);
-  canvas.width = canvas.offsetWidth * ratio;
-  canvas.height = canvas.offsetHeight * ratio;
-  const ctx = canvas.getContext("2d");
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0); // Asegura coordenadas correctas
-  pad.clear(); // Limpia la firma (solo debe llamarse una vez al cargar)
-}
+  function resizeCanvas(canvas, pad) {
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    pad.clear();
+  }
 
-// Ajustar tamaño solo una vez al cargar
-window.addEventListener("load", () => {
-  resizeCanvas(growerSig1Canvas, growerPad1);
-  resizeCanvas(growerSig2Canvas, growerPad2);
-});
-  
+  window.addEventListener("load", () => {
+    resizeCanvas(growerSig1Canvas, growerPad1);
+    resizeCanvas(growerSig2Canvas, growerPad2);
+  });
+
   const form = document.getElementById("hazelnutForm");
 
-form.addEventListener("submit", function(e){
-  e.preventDefault();
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-  // Validar que ambas firmas estén completas
-  if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
-    alert("Please make sure both signature sections are completed before submitting the form.");
-    return;
-  }
+    if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
+      alert("Please make sure both signature sections are completed before submitting the form.");
+      return;
+    }
 
-// Convertir firmas a base64
-  const sig1 = growerPad1.toDataURL();
-  const sig2 = growerPad2.toDataURL();
-  document.getElementById("growerSig1Data").value = sig1;
-  document.getElementById("growerSig2Data").value = sig2;
+    const sig1 = growerPad1.toDataURL();
+    const sig2 = growerPad2.toDataURL();
+    document.getElementById("growerSig1Data").value = sig1;
+    document.getElementById("growerSig2Data").value = sig2;
 
-  // IMPORTANTE: Usa una pequeña pausa para asegurar que el DOM tenga los valores listos
-  setTimeout(() => {
-    const formData = new FormData(form);
-    const params = {};
-    formData.forEach((value, key) => {
-      params[key] = value;
-    });
+    setTimeout(() => {
+      const formData = new FormData(form);
+      const params = {};
+      formData.forEach((value, key) => {
+        params[key] = value;
+      });
 
-    // Construir HTML para sección de orchards adicionales
-// Generar HTML dinámico para Additional Orchards
-let additionalOrchardsHTML = '';
-for (let i = 1; i <= 12; i++) {
-  const orchard = form[`addorchard${i}`]?.value.trim() || "";
-  const acreage = form[`addacreage${i}`]?.value.trim() || "";
-  const variety = form[`addvariety${i}`]?.value.trim() || "";
-  const year = form[`addyear${i}`]?.value.trim() || "";
+      let additionalOrchardsHTML = '';
+      for (let i = 1; i <= 12; i++) {
+        const orchard = form[`addorchard${i}`]?.value.trim() || "";
+        const acreage = form[`addacreage${i}`]?.value.trim() || "";
+        const variety = form[`addvariety${i}`]?.value.trim() || "";
+        const year = form[`addyear${i}`]?.value.trim() || "";
+        if (orchard || acreage || variety || year) {
+          additionalOrchardsHTML += `
+            <tr style="height: 35px;">
+              <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
+              <td><span style="font-family: 'times new roman', times, serif;">${acreage}</span></td>
+              <td><span style="font-family: 'times new roman', times, serif;">${variety}</span></td>
+              <td><span style="font-family: 'times new roman', times, serif;">${year}</span></td>
+            </tr>`;
+        }
+      }
 
-  if (orchard || acreage || variety || year) {
-    additionalOrchardsHTML += `
-      <tr style="height: 35px;">
-        <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
-        <td><span style="font-family: 'times new roman', times, serif;">${acreage}</span></td>
-        <td><span style="font-family: 'times new roman', times, serif;">${variety}</span></td>
-        <td><span style="font-family: 'times new roman', times, serif;">${year}</span></td>
-      </tr>`;
-  }
-}
+      let orchardSplitsHTML = '';
+      for (let i = 1; i <= 4; i++) {
+        const orchard = form[`split${i}Orchard`]?.value.trim() || "";
+        const third = form[`split${i}Third`]?.value.trim() || "";
+        const percent = form[`split${i}Percent`]?.value.trim() || "";
+        const address = form[`split${i}Address`]?.value.trim() || "";
+        if (orchard || third || percent || address) {
+          orchardSplitsHTML += `
+            <tr style="height: 35px;">
+              <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
+              <td><span style="font-family: 'times new roman', times, serif;">${third}</span></td>
+              <td><span style="font-family: 'times new roman', times, serif;">${percent}</span></td>
+              <td><span style="font-family: 'times new roman', times, serif;">${address}</span></td>
+            </tr>`;
+        }
+      }
 
-// Generar HTML dinámico para Orchard Splits
-let orchardSplitsHTML = '';
-for (let i = 1; i <= 4; i++) {
-  const orchard = form[`split${i}Orchard`]?.value.trim() || "";
-  const third = form[`split${i}Third`]?.value.trim() || "";
-  const percent = form[`split${i}Percent`]?.value.trim() || "";
-  const address = form[`split${i}Address`]?.value.trim() || "";
+      params.additionalOrchardsHTML = additionalOrchardsHTML;
+      params.orchardSplitsHTML = orchardSplitsHTML;
 
-  if (orchard || third || percent || address) {
-    orchardSplitsHTML += `
-      <tr style="height: 35px;">
-        <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
-        <td><span style="font-family: 'times new roman', times, serif;">${third}</span></td>
-        <td><span style="font-family: 'times new roman', times, serif;">${percent}</span></td>
-        <td><span style="font-family: 'times new roman', times, serif;">${address}</span></td>
-      </tr>`;
-  }
-}
+      emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(() => {
+        console.log("Email sent to grower");
+      }, err => {
+        console.error("Failed sending to grower", err);
+      });
 
-// Agregar al objeto de parámetros de EmailJS
-params.additionalOrchardsHTML = additionalOrchardsHTML;
-params.orchardSplitsHTML = orchardSplitsHTML;
-
-    // Enviar al grower
-    emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(() => {
-      console.log("Email sent to grower");
-    }, err => {
-      console.error("Failed sending to grower", err);
-    });
-
-    // Enviar copia interna
-    emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params).then(() => {
-      alert("Form submitted successfully.");
-      form.reset();
-      growerPad1.clear();
-      growerPad2.clear();
-    }, err => {
-      alert("Error submitting form: " + err.text);
-    });
-  }, 200); // pequeña pausa para que se actualicen los campos hidden
-});
-</script>
-</body>
+      emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params).then(() => {
+        alert("Form submitted successfully.");
+        form.reset();
+        growerPad1.clear();
+        growerPad2.clear();
+      }, err => {
+        alert("Error submitting form: " + err.text);
+      });
+    }, 200);
+  });
+    </script>
+  </body>
 </html>
