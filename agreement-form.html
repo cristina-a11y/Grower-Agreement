@@ -406,13 +406,13 @@
       <input id="date" type="date" name="date" required>
 
       <label for="cropYear">Crop Year <span class="required">*</span></label>
-      <input id="cropYear" type="text" name="cropYear" placeholder="Crop Year" required>
+      <input id="cropYear" type="text" name="cropYear" placeholder="e.g., 2025" required>
 
       <label for="phoneDay">Phone (Day) <span class="required">*</span></label>
-      <input id="phoneDay" type="tel" name="phoneDay" autocomplete="tel" placeholder="Phone (Day)" required>
+      <input id="phoneDay" type="tel" name="phoneDay" autocomplete="tel" placeholder="000-000-0000" required>
 
       <label for="phoneEve">Phone (Eve)</label>
-      <input id="phoneEve" type="tel" name="phoneEve" autocomplete="tel" placeholder="Phone (Eve)">
+      <input id="phoneEve" type="tel" name="phoneEve" autocomplete="tel" placeholder="000-000-0000">
     </div>
   </div>
 
@@ -471,6 +471,14 @@
       alert("Geolocation is not supported by this browser.");
     }
   }
+  document.getElementById("mapButton").addEventListener("click", function() {
+    const loc = document.getElementById("orchardLocation").value.trim();
+    let url = "https://www.google.com/maps";
+    if (loc) {
+      url += "/search/" + encodeURIComponent(loc);
+    }
+    window.open(url, "_blank");
+  });
 </script>
 
   <table>
@@ -543,7 +551,7 @@
   </div>
 
   <label for="payable"> Check payable to: (if different than Grower Name) </label>
-  <input id="payable" type="text" name="checkPayable">
+  <input id="payable" type="text" name="checkPayable" placeholder="Payee Name">
   <p class="note">Minimum price paid and payment date will be per Willamette Hazelnut Inc. Company&rsquo;s published policy.</p>
 <label for="receivedAt">Hazelnuts Received At</label>
   <select id="receivedAt" name="receivedAt">
@@ -616,18 +624,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td><input type="text" name="addorchard1"></td><td><input type="text" name="addacreage1"></td><td><input type="text" name="addvariety1"></td><td><input type="text" name="addyear1"></td></tr>
-        <tr><td><input type="text" name="addorchard2"></td><td><input type="text" name="addacreage2"></td><td><input type="text" name="addvariety2"></td><td><input type="text" name="addyear2"></td></tr>
-        <tr><td><input type="text" name="addorchard3"></td><td><input type="text" name="addacreage3"></td><td><input type="text" name="addvariety3"></td><td><input type="text" name="addyear3"></td></tr>
-        <tr><td><input type="text" name="addorchard4"></td><td><input type="text" name="addacreage4"></td><td><input type="text" name="addvariety4"></td><td><input type="text" name="addyear4"></td></tr>
-        <tr><td><input type="text" name="addorchard5"></td><td><input type="text" name="addacreage5"></td><td><input type="text" name="addvariety5"></td><td><input type="text" name="addyear5"></td></tr>
-        <tr><td><input type="text" name="addorchard6"></td><td><input type="text" name="addacreage6"></td><td><input type="text" name="addvariety6"></td><td><input type="text" name="addyear6"></td></tr>
-        <tr><td><input type="text" name="addorchard7"></td><td><input type="text" name="addacreage7"></td><td><input type="text" name="addvariety7"></td><td><input type="text" name="addyear7"></td></tr>
-        <tr><td><input type="text" name="addorchard8"></td><td><input type="text" name="addacreage8"></td><td><input type="text" name="addvariety8"></td><td><input type="text" name="addyear8"></td></tr>
-        <tr><td><input type="text" name="addorchard9"></td><td><input type="text" name="addacreage9"></td><td><input type="text" name="addvariety9"></td><td><input type="text" name="addyear9"></td></tr>
-        <tr><td><input type="text" name="addorchard10"></td><td><input type="text" name="addacreage10"></td><td><input type="text" name="addvariety10"></td><td><input type="text" name="addyear10"></td></tr>
-        <tr><td><input type="text" name="addorchard11"></td><td><input type="text" name="addacreage11"></td><td><input type="text" name="addvariety11"></td><td><input type="text" name="addyear11"></td></tr>
-        <tr><td><input type="text" name="addorchard12"></td><td><input type="text" name="addacreage12"></td><td><input type="text" name="addvariety12"></td><td><input type="text" name="addyear12"></td></tr>
+        <tr><td><input type="text" name="addorchard1" placeholder="Orchard"></td><td><input type="text" name="addacreage1" placeholder="Acreage"></td><td><input type="text" name="addvariety1" placeholder="Variety"></td><td><input type="text" name="addyear1" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard2" placeholder="Orchard"></td><td><input type="text" name="addacreage2" placeholder="Acreage"></td><td><input type="text" name="addvariety2" placeholder="Variety"></td><td><input type="text" name="addyear2" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard3" placeholder="Orchard"></td><td><input type="text" name="addacreage3" placeholder="Acreage"></td><td><input type="text" name="addvariety3" placeholder="Variety"></td><td><input type="text" name="addyear3" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard4" placeholder="Orchard"></td><td><input type="text" name="addacreage4" placeholder="Acreage"></td><td><input type="text" name="addvariety4" placeholder="Variety"></td><td><input type="text" name="addyear4" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard5" placeholder="Orchard"></td><td><input type="text" name="addacreage5" placeholder="Acreage"></td><td><input type="text" name="addvariety5" placeholder="Variety"></td><td><input type="text" name="addyear5" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard6" placeholder="Orchard"></td><td><input type="text" name="addacreage6" placeholder="Acreage"></td><td><input type="text" name="addvariety6" placeholder="Variety"></td><td><input type="text" name="addyear6" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard7" placeholder="Orchard"></td><td><input type="text" name="addacreage7" placeholder="Acreage"></td><td><input type="text" name="addvariety7" placeholder="Variety"></td><td><input type="text" name="addyear7" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard8" placeholder="Orchard"></td><td><input type="text" name="addacreage8" placeholder="Acreage"></td><td><input type="text" name="addvariety8" placeholder="Variety"></td><td><input type="text" name="addyear8" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard9" placeholder="Orchard"></td><td><input type="text" name="addacreage9" placeholder="Acreage"></td><td><input type="text" name="addvariety9" placeholder="Variety"></td><td><input type="text" name="addyear9" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard10" placeholder="Orchard"></td><td><input type="text" name="addacreage10" placeholder="Acreage"></td><td><input type="text" name="addvariety10" placeholder="Variety"></td><td><input type="text" name="addyear10" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard11" placeholder="Orchard"></td><td><input type="text" name="addacreage11" placeholder="Acreage"></td><td><input type="text" name="addvariety11" placeholder="Variety"></td><td><input type="text" name="addyear11" placeholder="Year"></td></tr>
+        <tr><td><input type="text" name="addorchard12" placeholder="Orchard"></td><td><input type="text" name="addacreage12" placeholder="Acreage"></td><td><input type="text" name="addvariety12" placeholder="Variety"></td><td><input type="text" name="addyear12" placeholder="Year"></td></tr>
       </tbody>
     </table>
     </div>
@@ -639,54 +647,56 @@
       <div class="split-block">
         <div class="split-block-title">SPLIT #1</div>
         <label for="split1Orchard">Orchard Name</label>
-        <input id="split1Orchard" type="text" name="split1Orchard">
+        <input id="split1Orchard" type="text" name="split1Orchard" placeholder="Orchard">
         <label for="split1Third">Third-Party Grower Name</label>
-        <input id="split1Third" type="text" name="split1Third">
+        <input id="split1Third" type="text" name="split1Third" placeholder="3rd-Party Name">
         <label for="split1Percent">% To Be Paid to Third-Party</label>
-        <input id="split1Percent" type="text" name="split1Percent">
+        <input id="split1Percent" type="text" name="split1Percent" placeholder="%">
         <label for="split1Address">Third-Party Mailing Address</label>
-        <input id="split1Address" type="text" name="split1Address">
+        <input id="split1Address" type="text" name="split1Address" placeholder="Mailing Address">
       </div>
 
       <div class="split-block">
         <div class="split-block-title">SPLIT #2</div>
         <label for="split2Orchard">Orchard Name</label>
-        <input id="split2Orchard" type="text" name="split2Orchard">
+        <input id="split2Orchard" type="text" name="split2Orchard" placeholder="Orchard 2">
         <label for="split2Third">Third-Party Grower Name</label>
-        <input id="split2Third" type="text" name="split2Third">
+        <input id="split2Third" type="text" name="split2Third" placeholder="3rd-Party Name 2">
         <label for="split2Percent">% To Be Paid to Third-Party</label>
-        <input id="split2Percent" type="text" name="split2Percent">
+        <input id="split2Percent" type="text" name="split2Percent" placeholder="%">
         <label for="split2Address">Third-Party Mailing Address</label>
-        <input id="split2Address" type="text" name="split2Address">
+        <input id="split2Address" type="text" name="split2Address" placeholder="Address 2">
       </div>
 
       <div class="split-block">
         <div class="split-block-title">SPLIT #3</div>
         <label for="split3Orchard">Orchard Name</label>
-        <input id="split3Orchard" type="text" name="split3Orchard">
+        <input id="split3Orchard" type="text" name="split3Orchard" placeholder="Orchard 3">
         <label for="split3Third">Third-Party Grower Name</label>
-        <input id="split3Third" type="text" name="split3Third">
+        <input id="split3Third" type="text" name="split3Third" placeholder="3rd-Party Name 3">
         <label for="split3Percent">% To Be Paid to Third-Party</label>
-        <input id="split3Percent" type="text" name="split3Percent">
+        <input id="split3Percent" type="text" name="split3Percent" placeholder="%">
         <label for="split3Address">Third-Party Mailing Address</label>
-        <input id="split3Address" type="text" name="split3Address">
+        <input id="split3Address" type="text" name="split3Address" placeholder="Address 3">
       </div>
 
       <div class="split-block">
         <div class="split-block-title">SPLIT #4</div>
         <label for="split4Orchard">Orchard Name</label>
-        <input id="split4Orchard" type="text" name="split4Orchard">
+        <input id="split4Orchard" type="text" name="split4Orchard" "Orchard 4">
         <label for="split4Third">Third-Party Grower Name</label>
-        <input id="split4Third" type="text" name="split4Third">
+        <input id="split4Third" type="text" name="split4Third" placeholder="3rd-Party Name 4">
         <label for="split4Percent">% To Be Paid to Third-Party</label>
-        <input id="split4Percent" type="text" name="split4Percent">
+        <input id="split4Percent" type="text" name="split4Percent" placeholder="%">
         <label for="split4Address">Third-Party Mailing Address</label>
-        <input id="split4Address" type="text" name="split4Address">
+        <input id="split4Address" type="text" name="split4Address" placeholder="Address 4">
       </div>
     </div>
 
     <button type="submit" class="submit-btn">Submit</button>
 
+</form>
+    
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
