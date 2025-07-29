@@ -731,6 +731,12 @@ You can use your current location or search for it on <a href="https://www.googl
   window.addEventListener("load", () => {
     resizeCanvas(growerSig1Canvas, growerPad1);
     resizeCanvas(growerSig2Canvas, growerPad2);
+
+    const dateInput = document.getElementById("date");
+    if (dateInput && !dateInput.value) {
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.value = today;
+    }
   });
 
   const form = document.getElementById("hazelnutForm");
