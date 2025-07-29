@@ -126,7 +126,6 @@
   width: 100%;
   margin-bottom: 30px;
 }
-  }
   .inline {
     flex-wrap: wrap;
     display: flex;
@@ -139,6 +138,16 @@
   .full-line {
     width: 100%;
   }
+.button-group {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button-group button {
+  flex: 1 1 200px;
+}
 .form-columns {
   flex-wrap: wrap;
   display: flex;
@@ -211,7 +220,7 @@
   .note {
     font-size: 0.9em;
     font-style: italic;
-    margin-top: -8px;
+    margin-top: 8px;
     margin-bottom: 12px;
   }
 .legal-text {
@@ -438,7 +447,7 @@
   <input id="orchardLocation" type="text" name="orchardLocation"
          placeholder="Enter physical address or GPS coordinates if no address is available">
 
-  <div style="margin-top: 8px;">
+  <div class="button-group">
     <button type="button" id="mapButton">Open Google Maps</button>
     <button type="button" id="getLocationButton" onclick="getLocation()">Use My Location</button>
   </div>
@@ -449,7 +458,6 @@
   </p>
 </div>
 
-</form>
 <script>
   function getLocation() {
     if (navigator.geolocation) {
@@ -678,6 +686,8 @@
     </div>
 
     <button type="submit" class="submit-btn">Submit</button>
+
+</form>
 
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
