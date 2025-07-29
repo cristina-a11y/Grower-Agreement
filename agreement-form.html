@@ -126,7 +126,6 @@
   width: 100%;
   margin-bottom: 30px;
 }
-  }
   .inline {
     flex-wrap: wrap;
     display: flex;
@@ -139,6 +138,16 @@
   .full-line {
     width: 100%;
   }
+.button-group {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button-group button {
+  flex: 1 1 200px;
+}
 .form-columns {
   flex-wrap: wrap;
   display: flex;
@@ -211,7 +220,7 @@
   .note {
     font-size: 0.9em;
     font-style: italic;
-    margin-top: -8px;
+    margin-top: 8px;
     margin-bottom: 12px;
   }
 .legal-text {
@@ -379,13 +388,13 @@
   <div class="form-columns">
     <div class="col">
       <label for="growerName">Grower Name <span class="required">*</span></label>
-      <input id="growerName" type="text" name="growerName" autocomplete="name" required>
+      <input id="growerName" type="text" name="growerName" autocomplete="name" placeholder="Grower Name" required>
 
       <label for="contactName">Contact Name:</label>
-      <input id="contactName" type="text" name="contactName" autocomplete="name">
+      <input id="contactName" type="text" name="contactName" autocomplete="name" placeholder="Contact Name (If Different)">
 
       <label for="email">Email Address:</label>
-      <input id="email" type="email" name="email" autocomplete="email">
+      <input id="email" type="email" name="email" autocomplete="email" placeholder="Email">
 
       <span class="radio-label">HGBA Member <span class="required">*</span></span>
       <label><input type="radio" name="hgba" value="yes" required> Yes</label>
@@ -397,13 +406,13 @@
       <input id="date" type="date" name="date" required>
 
       <label for="cropYear">Crop Year <span class="required">*</span></label>
-      <input id="cropYear" type="text" name="cropYear" required>
+      <input id="cropYear" type="text" name="cropYear" placeholder="Crop Year" required>
 
       <label for="phoneDay">Phone (Day) <span class="required">*</span></label>
-      <input id="phoneDay" type="tel" name="phoneDay" autocomplete="tel" required>
+      <input id="phoneDay" type="tel" name="phoneDay" autocomplete="tel" placeholder="Phone (Day)" required>
 
       <label for="phoneEve">Phone (Eve)</label>
-      <input id="phoneEve" type="tel" name="phoneEve" autocomplete="tel">
+      <input id="phoneEve" type="tel" name="phoneEve" autocomplete="tel" placeholder="Phone (Eve)">
     </div>
   </div>
 
@@ -415,18 +424,18 @@
     </div>
     <div class="col">
       <label for="city">City <span class="required">*</span></label>
-      <input id="city" type="text" name="city" autocomplete="address-level2" required>
+      <input id="city" type="text" name="city" autocomplete="address-level2" placeholder="City" required>
     </div>
   </div>
 
   <div class="form-columns">
     <div class="col">
       <label for="state">State <span class="required">*</span></label>
-      <input id="state" type="text" name="state" autocomplete="address-level1" required>
+      <input id="state" type="text" name="state" autocomplete="address-level1" placeholder="State" required>
     </div>
     <div class="col">
       <label for="zip">Zip <span class="required">*</span></label>
-      <input id="zip" type="text" name="zip" autocomplete="postal-code" required>
+      <input id="zip" type="text" name="zip" autocomplete="postal-code" placeholder="Zip Code" required>
     </div>
   </div>
 
@@ -438,7 +447,7 @@
   <input id="orchardLocation" type="text" name="orchardLocation"
          placeholder="Enter physical address or GPS coordinates if no address is available">
 
-  <div style="margin-top: 8px;">
+  <div class="button-group">
     <button type="button" id="mapButton">Open Google Maps</button>
     <button type="button" id="getLocationButton" onclick="getLocation()">Use My Location</button>
   </div>
