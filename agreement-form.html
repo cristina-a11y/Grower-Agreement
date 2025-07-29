@@ -748,15 +748,58 @@ form.addEventListener("submit", function(e){
 
   // IMPORTANTE: Usa una pequeña pausa para asegurar que el DOM tenga los valores listos
   setTimeout(() => {
+    const formData = new FormData(form);
+    const params = {};
+    formData.forEach((value, key) => {
+      params[key] = value;
+    });
+
+    // Construir HTML para sección de orchards adicionales
+    function buildAdditionalOrchardsHTML() {
+      let rows = "";
+      for (let i = 1; i <= 12; i++) {
+        const o = form[`addorchard${i}`].value.trim();
+        const a = form[`addacreage${i}`].value.trim();
+        const v = form[`addvariety${i}`].value.trim();
+        const y = form[`addyear${i}`].value.trim();
+        if (o || a || v || y) {
+          rows += `<tr><td>${o}</td><td>${a}</td><td>${v}</td><td>${y}</td></tr>`;
+        }
+      }
+      return rows
+        ? `<table><thead><tr><th>Orchard</th><th>Acreage</th><th>Variety</th><th>Planting Year</th></tr></thead><tbody>${rows}</tbody></table>`
+        : "";
+    }
+
+    // Construir HTML para sección de splits
+    function buildOrchardSplitsHTML() {
+      let rows = "";
+      for (let i = 1; i <= 4; i++) {
+        const o = form[`split${i}Orchard`].value.trim();
+        const t = form[`split${i}Third`].value.trim();
+        const p = form[`split${i}Percent`].value.trim();
+        const addr = form[`split${i}Address`].value.trim();
+        if (o || t || p || addr) {
+          rows += `<tr><td>${o}</td><td>${t}</td><td>${p}</td><td>${addr}</td></tr>`;
+        }
+      }
+      return rows
+        ? `<table><thead><tr><th>Orchard</th><th>Third-Party</th><th>% To Third-Party</th><th>Mailing Address</th></tr></thead><tbody>${rows}</tbody></table>`
+        : "";
+    }
+
+    params.additionalOrchardsHTML = buildAdditionalOrchardsHTML();
+    params.orchardSplitsHTML = buildOrchardSplitsHTML();
+
     // Enviar al grower
-    emailjs.sendForm(SERVICE_ID, HAZELNUT_AGREEMENT, form).then(() => {
+    emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(() => {
       console.log("Email sent to grower");
     }, err => {
       console.error("Failed sending to grower", err);
     });
 
     // Enviar copia interna
-    emailjs.sendForm(SERVICE_ID, RESPONSES_TEMPLATE, form).then(() => {
+    emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params).then(() => {
       alert("Form submitted successfully.");
       form.reset();
       growerPad1.clear();
