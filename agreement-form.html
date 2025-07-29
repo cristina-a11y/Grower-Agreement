@@ -754,41 +754,47 @@ form.addEventListener("submit", function(e){
     });
 
     // Construir HTML para sección de orchards adicionales
-    function buildAdditionalOrchardsHTML() {
-      let rows = "";
-      for (let i = 1; i <= 12; i++) {
-        const o = form[`addorchard${i}`].value.trim();
-        const a = form[`addacreage${i}`].value.trim();
-        const v = form[`addvariety${i}`].value.trim();
-        const y = form[`addyear${i}`].value.trim();
-        if (o || a || v || y) {
-          rows += `<tr><td>${o}</td><td>${a}</td><td>${v}</td><td>${y}</td></tr>`;
-        }
-      }
-      return rows
-        ? `<table><thead><tr><th>Orchard</th><th>Acreage</th><th>Variety</th><th>Planting Year</th></tr></thead><tbody>${rows}</tbody></table>`
-        : "";
-    }
+// Generar HTML dinámico para Additional Orchards
+let additionalOrchardsHTML = '';
+for (let i = 1; i <= 12; i++) {
+  const orchard = form[`addorchard${i}`]?.value.trim() || "";
+  const acreage = form[`addacreage${i}`]?.value.trim() || "";
+  const variety = form[`addvariety${i}`]?.value.trim() || "";
+  const year = form[`addyear${i}`]?.value.trim() || "";
 
-    // Construir HTML para sección de splits
-    function buildOrchardSplitsHTML() {
-      let rows = "";
-      for (let i = 1; i <= 4; i++) {
-        const o = form[`split${i}Orchard`].value.trim();
-        const t = form[`split${i}Third`].value.trim();
-        const p = form[`split${i}Percent`].value.trim();
-        const addr = form[`split${i}Address`].value.trim();
-        if (o || t || p || addr) {
-          rows += `<tr><td>${o}</td><td>${t}</td><td>${p}</td><td>${addr}</td></tr>`;
-        }
-      }
-      return rows
-        ? `<table><thead><tr><th>Orchard</th><th>Third-Party</th><th>% To Third-Party</th><th>Mailing Address</th></tr></thead><tbody>${rows}</tbody></table>`
-        : "";
-    }
+  if (orchard || acreage || variety || year) {
+    additionalOrchardsHTML += `
+      <tr style="height: 35px;">
+        <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
+        <td><span style="font-family: 'times new roman', times, serif;">${acreage}</span></td>
+        <td><span style="font-family: 'times new roman', times, serif;">${variety}</span></td>
+        <td><span style="font-family: 'times new roman', times, serif;">${year}</span></td>
+      </tr>`;
+  }
+}
 
-    params.additionalOrchardsHTML = buildAdditionalOrchardsHTML();
-    params.orchardSplitsHTML = buildOrchardSplitsHTML();
+// Generar HTML dinámico para Orchard Splits
+let orchardSplitsHTML = '';
+for (let i = 1; i <= 4; i++) {
+  const orchard = form[`split${i}Orchard`]?.value.trim() || "";
+  const third = form[`split${i}Third`]?.value.trim() || "";
+  const percent = form[`split${i}Percent`]?.value.trim() || "";
+  const address = form[`split${i}Address`]?.value.trim() || "";
+
+  if (orchard || third || percent || address) {
+    orchardSplitsHTML += `
+      <tr style="height: 35px;">
+        <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
+        <td><span style="font-family: 'times new roman', times, serif;">${third}</span></td>
+        <td><span style="font-family: 'times new roman', times, serif;">${percent}</span></td>
+        <td><span style="font-family: 'times new roman', times, serif;">${address}</span></td>
+      </tr>`;
+  }
+}
+
+// Agregar al objeto de parámetros de EmailJS
+params.additionalOrchardsHTML = additionalOrchardsHTML;
+params.orchardSplitsHTML = orchardSplitsHTML;
 
     // Enviar al grower
     emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(() => {
