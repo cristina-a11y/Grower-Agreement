@@ -754,43 +754,9 @@ You can use your current location or search for it on <a href="https://www.googl
       formData.forEach((value, key) => {
         params[key] = value;
       });
-
-      let additionalOrchardsHTML = '';
-      for (let i = 1; i <= 12; i++) {
-        const orchard = form[`addorchard${i}`]?.value.trim() || "";
-        const acreage = form[`addacreage${i}`]?.value.trim() || "";
-        const variety = form[`addvariety${i}`]?.value.trim() || "";
-        const year = form[`addyear${i}`]?.value.trim() || "";
-        if (orchard || acreage || variety || year) {
-          additionalOrchardsHTML += `
-            <tr style="height: 35px;">
-              <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
-              <td><span style="font-family: 'times new roman', times, serif;">${acreage}</span></td>
-              <td><span style="font-family: 'times new roman', times, serif;">${variety}</span></td>
-              <td><span style="font-family: 'times new roman', times, serif;">${year}</span></td>
-            </tr>`;
-        }
-      }
-
-      let orchardSplitsHTML = '';
-      for (let i = 1; i <= 4; i++) {
-        const orchard = form[`split${i}Orchard`]?.value.trim() || "";
-        const third = form[`split${i}Third`]?.value.trim() || "";
-        const percent = form[`split${i}Percent`]?.value.trim() || "";
-        const address = form[`split${i}Address`]?.value.trim() || "";
-        if (orchard || third || percent || address) {
-          orchardSplitsHTML += `
-            <tr style="height: 35px;">
-              <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
-              <td><span style="font-family: 'times new roman', times, serif;">${third}</span></td>
-              <td><span style="font-family: 'times new roman', times, serif;">${percent}</span></td>
-              <td><span style="font-family: 'times new roman', times, serif;">${address}</span></td>
-            </tr>`;
-        }
-      }
-
-      params.additionalOrchardsHTML = additionalOrchardsHTML;
-      params.orchardSplitsHTML = orchardSplitsHTML;
+// Generar tablas completas solo si hay datos
+params.additionalOrchardsHTML = buildAdditionalOrchardsHTML();
+params.orchardSplitsHTML = buildOrchardSplitsHTML();
 
       emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(() => {
         console.log("Email sent to grower");
@@ -808,6 +774,86 @@ You can use your current location or search for it on <a href="https://www.googl
       });
     }, 200);
   });
+  });
+  
+// para que se generen las tablas en emailjs //
+function buildAdditionalOrchardsHTML() {
+  let rows = '';
+  for (let i = 1; i <= 12; i++) {
+    const orchard = form[`addorchard${i}`]?.value.trim() || '';
+    const acreage = form[`addacreage${i}`]?.value.trim() || '';
+    const variety = form[`addvariety${i}`]?.value.trim() || '';
+    const year = form[`addyear${i}`]?.value.trim() || '';
+
+    if (orchard || acreage || variety || year) {
+      rows += `
+        <tr style="height: 35px;">
+          <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
+          <td><span style="font-family: 'times new roman', times, serif;">${acreage}</span></td>
+          <td><span style="font-family: 'times new roman', times, serif;">${variety}</span></td>
+          <td><span style="font-family: 'times new roman', times, serif;">${year}</span></td>
+        </tr>`;
+    }
+  }
+
+  return rows
+    ? `<table style="width: 55.8282%; border-collapse: collapse; font-family: Arial, sans-serif; border-width: 1px; margin-left: auto; margin-right: auto;" border="1" cellpadding="8">
+        <thead>
+          <tr style="height: 35px;">
+            <th style="background: #714008; color: #fff;" colspan="4">
+              <span style="font-family: 'times new roman', times, serif; font-size: 18pt;">ADDITIONAL ORCHARDS</span>
+            </th>
+          </tr>
+          <tr style="height: 35px;">
+            <th><span style="font-family: 'times new roman', times, serif;">Orchard</span></th>
+            <th><span style="font-family: 'times new roman', times, serif;">Acreage</span></th>
+            <th><span style="font-family: 'times new roman', times, serif;">Variety</span></th>
+            <th><span style="font-family: 'times new roman', times, serif;">Planting Year</span></th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table><br>`
+    : '';
+}
+
+function buildOrchardSplitsHTML() {
+  let rows = '';
+  for (let i = 1; i <= 4; i++) {
+    const orchard = form[`split${i}Orchard`]?.value.trim() || '';
+    const third = form[`split${i}Third`]?.value.trim() || '';
+    const percent = form[`split${i}Percent`]?.value.trim() || '';
+    const address = form[`split${i}Address`]?.value.trim() || '';
+
+    if (orchard || third || percent || address) {
+      rows += `
+        <tr style="height: 35px;">
+          <td><span style="font-family: 'times new roman', times, serif;">${orchard}</span></td>
+          <td><span style="font-family: 'times new roman', times, serif;">${third}</span></td>
+          <td><span style="font-family: 'times new roman', times, serif;">${percent}</span></td>
+          <td><span style="font-family: 'times new roman', times, serif;">${address}</span></td>
+        </tr>`;
+    }
+  }
+
+  return rows
+    ? `<table style="width: 55.8282%; border-collapse: collapse; font-family: Arial, sans-serif; border-width: 1px; margin-left: auto; margin-right: auto;" border="1" cellpadding="8">
+        <thead>
+          <tr style="height: 35px;">
+            <th style="background: #714008; color: #fff;" colspan="4">
+              <span style="font-family: 'times new roman', times, serif; font-size: 18pt;">ORCHARDS SPLITS</span>
+            </th>
+          </tr>
+          <tr style="height: 35px;">
+            <th><span style="font-family: 'times new roman', times, serif;">Orchard</span></th>
+            <th><span style="font-family: 'times new roman', times, serif;">Third-Party</span></th>
+            <th><span style="font-family: 'times new roman', times, serif;">%</span></th>
+            <th><span style="font-family: 'times new roman', times, serif;">Address</span></th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table><br>`
+    : '';
+}
     </script>
   </body>
 </html>
