@@ -774,8 +774,7 @@ params.orchardSplitsHTML = buildOrchardSplitsHTML();
       });
     }, 200);
   });
-  });
-  
+
 // para que se generen las tablas en emailjs //
 function buildAdditionalOrchardsHTML() {
   let rows = '';
@@ -796,8 +795,7 @@ function buildAdditionalOrchardsHTML() {
     }
   }
 
-  return rows
-    ? `<table style="width: 55.8282%; border-collapse: collapse; font-family: Arial, sans-serif; border-width: 1px; margin-left: auto; margin-right: auto;" border="1" cellpadding="8">
+    const header = `<table style="width: 55.8282%; border-collapse: collapse; font-family: Arial, sans-serif; border-width: 1px; margin-left: auto; margin-right: auto;" border="1" cellpadding="8">
         <thead>
           <tr style="height: 35px;">
             <th style="background: #714008; color: #fff;" colspan="4">
@@ -810,10 +808,11 @@ function buildAdditionalOrchardsHTML() {
             <th><span style="font-family: 'times new roman', times, serif;">Variety</span></th>
             <th><span style="font-family: 'times new roman', times, serif;">Planting Year</span></th>
           </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table><br>`
-    : '';
+        </thead>`;
+
+  return rows
+    ? `${header}<tbody>${rows}</tbody></table><br>`
+    : `${header}</table><br>`;
 }
 
 function buildOrchardSplitsHTML() {
@@ -835,8 +834,7 @@ function buildOrchardSplitsHTML() {
     }
   }
 
-  return rows
-    ? `<table style="width: 55.8282%; border-collapse: collapse; font-family: Arial, sans-serif; border-width: 1px; margin-left: auto; margin-right: auto;" border="1" cellpadding="8">
+  const header = `<table style="width: 55.8282%; border-collapse: collapse; font-family: Arial, sans-serif; border-width: 1px; margin-left: auto; margin-right: auto;" border="1" cellpadding="8">
         <thead>
           <tr style="height: 35px;">
             <th style="background: #714008; color: #fff;" colspan="4">
@@ -849,10 +847,11 @@ function buildOrchardSplitsHTML() {
             <th><span style="font-family: 'times new roman', times, serif;">%</span></th>
             <th><span style="font-family: 'times new roman', times, serif;">Address</span></th>
           </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table><br>`
-    : '';
+        </thead>`;
+
+  return rows
+    ? `${header}<tbody>${rows}</tbody></table><br>`
+    : `${header}</table><br>`;
 }
     </script>
   </body>
