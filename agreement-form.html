@@ -312,6 +312,8 @@
     height: 150px;
     border: 1px solid #333;
     border-radius: 4px;
+    touch-action: none;
+    cursor: crosshair;
   }
 .clear-btn {
     margin-top: 4px;
@@ -731,6 +733,11 @@ You can use your current location or search for it on <a href="https://www.googl
   window.addEventListener("load", () => {
     resizeCanvas(growerSig1Canvas, growerPad1);
     resizeCanvas(growerSig2Canvas, growerPad2);
+
+    window.addEventListener("resize", () => {
+      resizeCanvas(growerSig1Canvas, growerPad1);
+      resizeCanvas(growerSig2Canvas, growerPad2);
+    });
 
     const dateInput = document.getElementById("date");
     if (dateInput && !dateInput.value) {
