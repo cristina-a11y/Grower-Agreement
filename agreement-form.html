@@ -696,7 +696,7 @@ You can use your current location or search for it on <a href="https://www.googl
 
 </form>
     
-<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+<script src="signature_pad_local.js"></script>
 <!-- EmailJS SDK -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
@@ -716,8 +716,8 @@ You can use your current location or search for it on <a href="https://www.googl
   const growerSig1Canvas = document.getElementById("growerSig1");
   const growerSig2Canvas = document.getElementById("growerSig2");
 
-  const growerPad1 = new SignaturePad(growerSig1Canvas);
-  const growerPad2 = new SignaturePad(growerSig2Canvas);
+  const growerPad1 = new SimpleSignaturePad(growerSig1Canvas);
+  const growerPad2 = new SimpleSignaturePad(growerSig2Canvas);
 
   function resizeCanvas(canvas, pad) {
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -737,6 +737,7 @@ You can use your current location or search for it on <a href="https://www.googl
       const today = new Date().toISOString().split("T")[0];
       dateInput.value = today;
     }
+  });
 
   const form = document.getElementById("hazelnutForm");
 
