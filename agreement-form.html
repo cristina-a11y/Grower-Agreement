@@ -741,7 +741,7 @@ You can use your current location or search for it on <a href="https://www.googl
 
     const dateInput = document.getElementById("date");
     if (dateInput && !dateInput.value) {
-      const today = new Date().toISOString().split("T")[0];
+      const today = new Date().toLocaleDateString('en-US');
       dateInput.value = today;
     }
   });
