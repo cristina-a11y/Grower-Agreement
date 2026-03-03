@@ -767,6 +767,31 @@ You can use your current location or search for it on <a href="https://www.googl
       formData.forEach((value, key) => {
         params[key] = value;
       });
+  // Convert date to US format (MM/DD/YYYY)
+  if (params.date && /^\d{4}-\d{2}-\d{2}$/.test(params.date)) {
+    const [y, m, d] = params.date.split("-");
+    params.date = `${m}/${d}/${y}`;
+  }
+
+emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(
+    function(response) {
+      console.log("Email sent to grower", response.status, response.text);
+    },
+    function(error) {
+      console.error("Failed sending to grower", error);
+    }
+  );
+
+  emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params).then(
+    function(response) {
+      alert("Form submitted successfully.");
+    },
+    function(error) {
+      console.error("Failed sending internal response", error);
+    }
+  );
+
+}, 0);
 // Generar tablas completas solo si hay datos
 params.additionalOrchardsHTML = buildAdditionalOrchardsHTML();
 params.orchardSplitsHTML = buildOrchardSplitsHTML();
