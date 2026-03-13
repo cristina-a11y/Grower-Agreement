@@ -113,6 +113,7 @@
   input[type="email"],
   input[type="date"],
   input[type="tel"],
+  input[type="number"],  
   select,
   textarea {
     width: 100%;
@@ -162,7 +163,6 @@
   width: 100%;
 }
 
-  }
   .small {
     font-size: 0.8em;
     font-style: italic;
@@ -391,7 +391,7 @@
   </div>
 </div>
 
-<form id="hazelnutForm" method="post">
+<form id="hazelnutForm">
   <!-- PRIMER BLOQUE DE DOS COLUMNAS -->
   <div class="form-columns">
     <div class="col">
@@ -583,7 +583,7 @@ You can use your current location or search for it on <a href="https://www.googl
   <span class="signature-caption">Buyer: Willamette Hazelnut Inc.</span>
 </div>
       <div class="signature-container">
-        <canvas id="growerSig1" class="signature-pad"></canvas>
+        <canvas id="growerSig1" class="signature-pad" width="430" height="160"></canvas>
         <button type="button" class="clear-btn" onclick="growerPad1.clear()">Clear</button>
         <input type="hidden" name="growerSig1Data" id="growerSig1Data">
         <span class="signature-caption">Grower's Signature</span>
@@ -591,33 +591,25 @@ You can use your current location or search for it on <a href="https://www.googl
   </div>
 
   <div class="cash-section">
-    <h2>CASH ADVANCE PROGRAM</h2>
-    <div class="legal-text">
-      <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
-    </div>
-    
-    </div>
-<div class="radio-group">
+  <h2>CASH ADVANCE PROGRAM</h2>
+  <div class="legal-text">
+    <p>Willamette Hazelnut, Inc. (Buyer) conducts a voluntary Cash Advance Program for its grower suppliers. If Grower commits to deliver bearing acres (defined as fourth leaf trees or older), Buyer will advance $300 per acre to Grower upon the execution of this Agreement. Grower understands and agrees that upon delivery of the hazelnut crop to Buyer, the total amount advanced by Buyer to Grower will be deducted from the first payment to Grower. If Grower fails to deliver their hazelnut crop to Buyer on or before October 31st, such non-delivery shall constitute a breach of contract. Buyer will make reasonable efforts to resolve the matter informally before pursuing legal action. In the event legal proceedings are required to enforce this agreement or remedy a breach, the prevailing party shall be entitled to recover reasonable attorney&rsquo;s fees and associated costs.</p>
+  </div>
+
+  <div class="radio-group">
     <span class="radio-label">Will You Participate in the Cash Advance Program?</span>
     <label><input type="radio" name="cashAdvance" value="yes"> Yes</label>
     <label><input type="radio" name="cashAdvance" value="no"> No</label>
-</div>
-
-<div class="form-field">
-  <label for="acreage">Number of Acres for Cash Advance:</label><br>
-  <input id="acreage" type="number" name="acreageCash" min="0" step="1" placeholder="Enter number of acres" style="idth: 100%; max-width: 600px; padding: 12px 10px; font-size: 16px; margin-top: 4px; box-sizing: border-box;">
-  <p class="note" style="font-style: italic; margin-top: 4px;">Must be equal to or less than acreage committed on this agreement</p>
-</div>
-  <div class="signature-container">
-  <canvas id="growerSig1" class="signature-pad" width="430" height="160"></canvas>
-  <button type="button" class="clear-btn" onclick="growerPad1.clear()">Clear</button>
-  <input type="hidden" name="growerSig1Data" id="growerSig1Data">
-  <span class="signature-caption">Grower's Signature</span>
-</div>
-  </div>
   </div>
 
-
+  <div class="form-field">
+    <label for="acreage">Number of Acres for Cash Advance:</label><br>
+    <input id="acreage" type="number" name="acreageCash" min="0" step="1" placeholder="Enter number of acres"
+           style="width: 100%; max-width: 600px; padding: 12px 10px; font-size: 16px; margin-top: 4px; box-sizing: border-box;">
+    <p class="note" style="font-style: italic; margin-top: 4px;">Must be equal to or less than acreage committed on this agreement</p>
+  </div>
+</div>
+    
   <div class="add-section">
     <h2>ADDITIONAL ORCHARDS <span class="optional">(if needed)</span></h2>
     <table>
@@ -720,11 +712,8 @@ You can use your current location or search for it on <a href="https://www.googl
   const HAZELNUT_AGREEMENT = "template_8d7vx5l";
   const RESPONSES_TEMPLATE = "template_14975";
 
-  const growerSig1Canvas = document.getElementById("growerSig1");
-  const growerSig2Canvas = document.getElementById("growerSig2");
-
-  const growerPad1 = new SimpleSignaturePad(growerSig1Canvas);
-  const growerPad2 = new SimpleSignaturePad(growerSig2Canvas);
+const growerSig1Canvas = document.getElementById("growerSig1");
+const growerPad1 = new SimpleSignaturePad(growerSig1Canvas);
 
   function resizeCanvas(canvas, pad) {
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -737,86 +726,62 @@ You can use your current location or search for it on <a href="https://www.googl
 
   window.addEventListener("load", () => {
     resizeCanvas(growerSig1Canvas, growerPad1);
-    resizeCanvas(growerSig2Canvas, growerPad2);
 
     window.addEventListener("resize", () => {
-      resizeCanvas(growerSig1Canvas, growerPad1);
-      resizeCanvas(growerSig2Canvas, growerPad2);
-    });
+  resizeCanvas(growerSig1Canvas, growerPad1);
+});
 
     const dateInput = document.getElementById("date");
     if (dateInput && !dateInput.value) {
-      const today = new Date().toLocaleDateString('en-US');
-      dateInput.value = today;
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.value = today;
     }
   });
 
   const form = document.getElementById("hazelnutForm");
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    if (growerPad1.isEmpty() || growerPad2.isEmpty()) {
-      alert("Please make sure both signature sections are completed before submitting the form.");
-      return;
-    }
+  if (growerPad1.isEmpty()) {
+    alert("Please complete the grower's signature before submitting the form.");
+    return;
+  }
 
-    const sig1 = growerPad1.toDataURL();
-    const sig2 = growerPad2.toDataURL();
-    document.getElementById("growerSig1Data").value = sig1;
-    document.getElementById("growerSig2Data").value = sig2;
+  document.getElementById("growerSig1Data").value = growerPad1.toDataURL("image/png");
 
-    setTimeout(() => {
-      const formData = new FormData(form);
-      const params = {};
-      formData.forEach((value, key) => {
-        params[key] = value;
-      });
+  const formData = new FormData(form);
+  const params = {};
+
+  formData.forEach((value, key) => {
+    params[key] = value;
+  });
+
+  // Generar tablas completas solo si hay datos
+  params.additionalOrchardsHTML = buildAdditionalOrchardsHTML();
+  params.orchardSplitsHTML = buildOrchardSplitsHTML();
+
   // Convert date to US format (MM/DD/YYYY)
   if (params.date && /^\d{4}-\d{2}-\d{2}$/.test(params.date)) {
     const [y, m, d] = params.date.split("-");
     params.date = `${m}/${d}/${y}`;
   }
 
-emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(
-    function(response) {
+  emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params)
+    .then(function(response) {
       console.log("Email sent to grower", response.status, response.text);
-    },
-    function(error) {
-      console.error("Failed sending to grower", error);
-    }
-  );
-
-  emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params).then(
-    function(response) {
+      return emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params);
+    })
+    .then(function(response) {
       alert("Form submitted successfully.");
-    },
-    function(error) {
-      console.error("Failed sending internal response", error);
-    }
-  );
-
-}, 0);
-// Generar tablas completas solo si hay datos
-params.additionalOrchardsHTML = buildAdditionalOrchardsHTML();
-params.orchardSplitsHTML = buildOrchardSplitsHTML();
-
-      emailjs.send(SERVICE_ID, HAZELNUT_AGREEMENT, params).then(() => {
-        console.log("Email sent to grower");
-      }, err => {
-        console.error("Failed sending to grower", err);
-      });
-
-      emailjs.send(SERVICE_ID, RESPONSES_TEMPLATE, params).then(() => {
-        alert("Form submitted successfully.");
-        form.reset();
-        growerPad1.clear();
-        growerPad2.clear();
-      }, err => {
-        alert("Error submitting form: " + err.text);
-      });
-    }, 200);
-  });
+      form.reset();
+      growerPad1.clear();
+    })
+    .catch(function(error) {
+      console.error("Error submitting form", error);
+      alert("Error submitting form: " + (error.text || "Unknown error"));
+    });
+});
 
 // para que se generen las tablas en emailjs //
 function buildAdditionalOrchardsHTML() {
