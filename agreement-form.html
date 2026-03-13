@@ -305,8 +305,13 @@
     text-align: center;
   }
 .signature-container {
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
 .signature-pad {
   width: 430px;
   height: 160px;
@@ -316,14 +321,6 @@
   touch-action: none;
   cursor: crosshair;
 }
-
-  .signature-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-</style>    
 .clear-btn {
     margin-top: 4px;
     font-size: 0.8em;
